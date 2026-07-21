@@ -803,7 +803,9 @@ function renderDayReco(day){
   const stopIds=new Set(day.stops.map(s=>{const c=coordOf(s.name);return c&&c.id;}));
   let anchor=ME;
   if(!anchor){
-    const pts=day.stops.map(s=>coordOf(s.name)).filter(Boolean).map(c=>c.ll);
+    // 이동(공항·복귀) 지점은 기준에서 제외 → 실제 활동 지역 중심으로
+    let pts=day.stops.filter(s=>s.cat!=="이동").map(s=>coordOf(s.name)).filter(Boolean).map(c=>c.ll);
+    if(!pts.length) pts=day.stops.map(s=>coordOf(s.name)).filter(Boolean).map(c=>c.ll);
     if(!pts.length) return "";
     anchor=[pts.reduce((a,p)=>a+p[0],0)/pts.length, pts.reduce((a,p)=>a+p[1],0)/pts.length];
   }

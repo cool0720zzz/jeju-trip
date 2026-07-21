@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0A5D57" />
+<meta name="apple-mobile-web-app-title" content="제주여행" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="description" content="제주 가족여행 일정 · 7.24–7.27 (플랜 A/B, 맛집·카페·사진명소)" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A5D57'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%8C%8A%3C/text%3E%3C/svg%3E" />
+<title>제주 가족여행 · 7.24–7.27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#FAF6EE;
+    --sand:#F1E9D8;
+    --card:#FFFDF8;
+    --ink:#1B2A2C;
+    --ink-soft:#586566;
+    --sea:#0F8A82;
+    --sea-deep:#0A5D57;
+    --foam:#D6EAE4;
+    --tangerine:#EE7B39;
+    --tangerine-soft:#FBE3D0;
+    --line:#E6DCC9;
+    --sky:#2E93C0;
+    --forest:#3F7D50;
+    --berry:#B15479;
+    --gray:#7C7A70;
+    --shadow:0 6px 20px rgba(27,42,44,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Noto Sans KR",system-ui,sans-serif;
+    background:var(--sand);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:460px;margin:0 auto;min-height:100vh;
+    background:var(--paper);
+    box-shadow:0 0 40px rgba(27,42,44,.06);
+    position:relative;overflow:hidden;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:34px 22px 0;
+    background:linear-gradient(165deg,#0F8A82 0%,#0A5D57 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    font-size:12px;letter-spacing:.28em;font-weight:700;
+    color:#BFEAE2;text-transform:uppercase;
+  }
+  .hero h1{
+    font-family:"Gowun Batang",serif;
+    font-size:34px;line-height:1.18;font-weight:700;
+    margin:8px 0 6px;letter-spacing:-.01em;
+  }
+  .hero .dates{font-size:14px;color:#DCF3EE;font-weight:500}
+  .hero .meta{
+    display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 30px;
+  }
+  .hero .pill{
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.22);
+    padding:5px 11px;border-radius:100px;
+    font-size:12.5px;font-weight:500;color:#fff;
+    backdrop-filter:blur(2px);
+  }
+  .wave{display:block;width:100%;height:26px;margin-bottom:-1px}
+
+  /* ---------- Plan toggle ---------- */
+  .planbar{
+    position:sticky;top:0;z-index:20;
+    background:var(--paper);
+    padding:14px 16px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  .seg{
+    display:flex;background:var(--sand);border-radius:14px;padding:4px;
+    gap:4px;
+  }
+  .seg button{
+    flex:1;border:0;cursor:pointer;
+    font-family:inherit;font-size:13.5px;font-weight:700;
+    color:var(--ink-soft);
+    padding:10px 6px;border-radius:11px;
+    background:transparent;transition:all .22s ease;
+    line-height:1.3;
+  }
+  .seg button .sub{display:block;font-size:10.5px;font-weight:500;margin-top:1px;opacity:.8}
+  .seg button[aria-selected="true"]{
+    background:var(--sea);color:#fff;box-shadow:0 3px 10px rgba(15,138,130,.28);
+  }
+  .planline{
+    display:flex;align-items:flex-start;gap:8px;
+    margin:12px 4px 0;font-size:12.5px;color:var(--ink-soft);
+  }
+  .planline b{color:var(--sea-deep)}
+  .planline .dot{margin-top:7px;width:6px;height:6px;border-radius:50%;background:var(--tangerine);flex:none}
+
+  /* ---------- Days ---------- */
+  .content{padding:6px 16px 40px}
+  .day{padding:22px 0 4px;scroll-margin-top:150px}
+  .day-head{display:flex;align-items:baseline;gap:10px;margin-bottom:2px}
+  .day-num{
+    font-family:"Gowun Batang",serif;font-size:13px;font-weight:700;
+    color:#fff;background:var(--sea-deep);
+    padding:3px 9px;border-radius:8px;letter-spacing:.04em;flex:none;
+  }
+  .day-title{font-family:"Gowun Batang",serif;font-size:19px;font-weight:700;color:var(--ink)}
+  .day-date{font-size:12px;color:var(--ink-soft);margin:2px 0 14px 2px;font-weight:500}
+
+  /* timeline */
+  .stops{position:relative;padding-left:26px}
+  .stops::before{
+    content:"";position:absolute;left:7px;top:6px;bottom:10px;
+    width:2px;background:repeating-linear-gradient(var(--line) 0 5px,transparent 5px 10px);
+  }
+  .stop{position:relative;margin-bottom:12px}
+  .stop::before{
+    content:"";position:absolute;left:-25px;top:4px;
+    width:16px;height:16px;border-radius:50%;
+    background:var(--card);border:3px solid var(--sea);
+  }
+  .stop.transit::before{border-color:var(--gray)}
+  .card{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:15px;padding:13px 14px;box-shadow:var(--shadow);
+  }
+  .card .top{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+  .time{font-size:12px;font-weight:700;color:var(--sea-deep);flex:none;
+    background:var(--foam);padding:2px 8px;border-radius:6px;}
+  .cat{font-size:11px;font-weight:700;padding:2px 8px;border-radius:100px;flex:none}
+  .name{font-size:15.5px;font-weight:700;color:var(--ink);margin:2px 0 3px}
+  .desc{font-size:12.8px;color:var(--ink-soft)}
+  .maplink{
+    display:inline-flex;align-items:center;gap:4px;margin-top:9px;
+    font-size:12px;font-weight:700;color:var(--sea);
+    text-decoration:none;border:1px solid var(--foam);
+    background:#F3FAF8;padding:5px 11px;border-radius:9px;
+  }
+  .maplink:active{background:var(--foam)}
+  .maplink svg{width:13px;height:13px}
+
+  /* 구간 이동 정보 */
+  .leg{
+    display:flex;align-items:center;gap:6px;
+    margin:-4px 0 10px 0;padding:0 2px;
+    font-size:11.5px;color:var(--gray);font-weight:500;
+  }
+  .leg .car{font-size:12px;filter:grayscale(.15)}
+  .leg b{color:var(--ink-soft);font-weight:700}
+  .leg a{
+    margin-left:auto;text-decoration:none;
+    color:var(--sea);font-weight:700;font-size:11px;
+    border:1px solid var(--foam);background:#F3FAF8;
+    padding:3px 9px;border-radius:8px;
+  }
+  .daysum{
+    display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px 2px;
+  }
+  .daysum span{
+    font-size:11px;font-weight:700;color:var(--ink-soft);
+    background:var(--sand);border:1px solid var(--line);
+    padding:3px 9px;border-radius:100px;
+  }
+  .daysum a{
+    font-size:11px;font-weight:700;color:#fff;text-decoration:none;
+    background:var(--sea-deep);padding:3px 10px;border-radius:100px;
+  }
+
+  /* 오늘 강조 + 퀵내비 */
+  .quicknav{display:flex;gap:6px;margin:10px 2px 0;overflow-x:auto;padding-bottom:2px}
+  .quicknav a{
+    flex:none;text-decoration:none;font-size:11.5px;font-weight:700;
+    color:var(--ink-soft);background:var(--sand);
+    border:1px solid var(--line);padding:5px 11px;border-radius:100px;
+  }
+  .quicknav a.now{background:var(--tangerine);color:#fff;border-color:var(--tangerine)}
+  .day.today .day-num{background:var(--tangerine)}
+  .day.today > .day-head::after{
+    content:"오늘";font-size:10.5px;font-weight:700;color:#fff;
+    background:var(--tangerine);padding:2px 8px;border-radius:100px;
+  }
+  .dday{
+    display:inline-block;margin-top:10px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);
+    padding:4px 12px;border-radius:100px;font-size:12.5px;font-weight:700;
+  }
+
+  .daynote{
+    display:flex;gap:8px;margin:4px 0 2px;
+    background:var(--tangerine-soft);border-radius:12px;
+    padding:11px 13px;font-size:12.5px;color:#7a3f1c;line-height:1.55;
+  }
+  .daynote .ic{flex:none;font-size:14px}
+
+  .wave-div{display:block;width:100%;height:16px;color:var(--foam);opacity:.9;margin:6px 0}
+
+  /* ---------- Extras ---------- */
+  .extras{margin-top:14px;padding:24px 16px 46px;background:var(--sand);border-top:1px solid var(--line)}
+  .extras h2{font-family:"Gowun Batang",serif;font-size:22px;font-weight:700;margin-bottom:3px}
+  .extras .lead{font-size:13px;color:var(--ink-soft);margin-bottom:16px}
+  .filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+  .filters button{
+    font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+    border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+    padding:7px 14px;border-radius:100px;transition:all .18s ease;
+  }
+  .filters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .xgrid{display:flex;flex-direction:column;gap:11px}
+  .xcard{
+    background:var(--card);border:1px solid var(--line);border-radius:15px;
+    padding:14px;box-shadow:var(--shadow);
+  }
+  .xcard .xhead{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+  .xtag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:100px;color:#fff;flex:none}
+  .xarea{font-size:11.5px;color:var(--gray);font-weight:500}
+  .xname{font-size:15.5px;font-weight:700;margin:1px 0 4px}
+  .xdesc{font-size:12.8px;color:var(--ink-soft);line-height:1.55}
+  .xnote{
+    display:inline-block;margin-top:7px;
+    font-size:11px;font-weight:700;color:#7a3f1c;
+    background:var(--tangerine-soft);padding:3px 9px;border-radius:8px;
+  }
+
+  .footer{padding:26px 20px 40px;text-align:center;color:var(--ink-soft);font-size:11.5px;background:var(--paper)}
+  .footer .check{
+    text-align:left;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;margin-bottom:18px;box-shadow:var(--shadow);
+  }
+  .footer .check h3{font-size:13px;color:var(--sea-deep);margin-bottom:7px;font-weight:700}
+  .footer .check p{font-size:12.3px;color:var(--ink-soft);line-height:1.6;margin-bottom:5px;text-align:left}
+  .footer .check b{color:var(--tangerine)}
+
+  /* ---------- 키워드 배지 ---------- */
+  .kws{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0 2px}
+  .kw{
+    font-size:10.5px;font-weight:600;color:var(--sea-deep);
+    background:#EDF6F3;border:1px solid #D6EAE4;
+    padding:2px 7px;border-radius:7px;line-height:1.5;
+  }
+  .kw.warn{color:#8a4b12;background:#FBEBDA;border-color:#F3D8BE}
+  .conf{font-size:10px;font-weight:700;padding:1px 6px;border-radius:6px;margin-left:5px}
+  .conf.low{color:#8a4b12;background:#FBEBDA}
+
+  /* ---------- 길찾기 버튼 행 ---------- */
+  .nav-row{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+  .nav-btn{
+    display:inline-flex;align-items:center;gap:4px;cursor:pointer;
+    font-family:inherit;font-size:11.5px;font-weight:700;text-decoration:none;
+    border:1px solid var(--line);border-radius:9px;padding:5px 10px;background:var(--card);
+  }
+  .nav-btn.kakao{background:#FEE500;border-color:#F2D900;color:#3A2A00}
+  .nav-btn.naver{background:#03C75A;border-color:#02b352;color:#fff}
+  .nav-btn.google{background:#fff;border-color:#DADCE0;color:#3c4043}
+  .nav-btn:active{transform:translateY(1px)}
+
+  /* ---------- 지도 섹션 ---------- */
+  .mapwrap{padding:16px 16px 6px;background:var(--paper);border-bottom:1px solid var(--line)}
+  .maphead{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .maphead h2{font-family:"Gowun Batang",serif;font-size:19px;font-weight:700;flex:1}
+  .locbtn{
+    display:inline-flex;align-items:center;gap:5px;cursor:pointer;
+    font-family:inherit;font-size:12px;font-weight:700;color:#fff;
+    background:var(--sea);border:0;border-radius:100px;padding:8px 13px;
+    box-shadow:0 3px 10px rgba(15,138,130,.28);
+  }
+  .locbtn:active{transform:translateY(1px)}
+  .locbtn.loading{opacity:.6;pointer-events:none}
+  .mapfilters{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:2px}
+  .mapfilters button{
+    flex:none;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;
+    border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+    padding:6px 12px;border-radius:100px;transition:all .16s ease;
+  }
+  .mapfilters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  #map{width:100%;height:340px;border-radius:16px;border:1px solid var(--line);
+    box-shadow:var(--shadow);background:#E9EEF0;overflow:hidden}
+  .mapnote{
+    display:flex;gap:8px;margin:10px 2px 2px;font-size:12px;line-height:1.55;
+    background:var(--tangerine-soft);border-radius:12px;padding:11px 13px;color:#7a3f1c;
+  }
+  .mapnote code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:11px}
+
+  /* 지도 마커 (카카오 CustomOverlay는 기본 중앙 정렬) */
+  .pin{
+    width:15px;height:15px;border-radius:50%;border:2px solid #fff;cursor:pointer;
+    box-shadow:0 1px 4px rgba(0,0,0,.35);transition:transform .12s ease;
+  }
+  .pin:hover,.pin.sel{transform:scale(1.5);z-index:5}
+  .pin.me{
+    width:18px;height:18px;background:#2E7DF6;
+    box-shadow:0 0 0 6px rgba(46,125,246,.22),0 2px 5px rgba(0,0,0,.3);
+  }
+
+  /* 내 주변 목록 */
+  .nearby{padding:14px 16px 4px;background:var(--paper)}
+  .nearby h3{font-size:13px;font-weight:700;color:var(--sea-deep);margin-bottom:2px}
+  .nearby .sub{font-size:11.5px;color:var(--ink-soft);margin-bottom:11px}
+  .ncard{
+    display:flex;align-items:center;gap:11px;background:var(--card);
+    border:1px solid var(--line);border-radius:13px;padding:11px 13px;
+    box-shadow:var(--shadow);margin-bottom:9px;
+  }
+  .ncard .rank{
+    flex:none;width:24px;height:24px;border-radius:50%;background:var(--sea-deep);color:#fff;
+    font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .ncard .info{flex:1;min-width:0}
+  .ncard .nm{font-size:14px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:6px}
+  .ncard .nm .badge{font-size:10px;font-weight:700;padding:1px 6px;border-radius:100px;color:#fff;flex:none}
+  .ncard .met{font-size:11.5px;color:var(--ink-soft);margin-top:2px}
+  .ncard .met b{color:var(--tangerine)}
+  .ncard .go{
+    flex:none;font-size:11.5px;font-weight:700;color:#3A2A00;text-decoration:none;
+    background:#FEE500;border:1px solid #F2D900;border-radius:9px;padding:7px 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">JEJU · FAMILY TRIP</div>
+    <h1>제주 가족여행</h1>
+    <div class="dates">2026. 7. 24 (목) — 7. 27 (일) · 3박 4일</div>
+    <div class="meta">
+      <span class="pill">👨‍👩‍👧‍👦 어른 3 · 아이 2</span>
+      <span class="pill">🧒 초4 · 초2</span>
+      <span class="pill">👵 장모님 동행</span>
+      <span class="pill">🏠 함덕·조천 3박</span>
+    </div>
+    <div class="dday" id="dday"></div>
+    <svg class="wave" viewBox="0 0 460 26" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,18 C60,4 120,4 180,14 C250,26 320,26 400,14 C430,9 450,10 460,12 L460,26 L0,26 Z" fill="#FAF6EE"/>
+    </svg>
+  </header>
+
+  <div class="planbar">
+    <div class="seg" role="tablist" aria-label="여행 플랜 선택">
+      <button role="tab" aria-selected="true" data-plan="A">플랜 A<span class="sub">자연·바다</span></button>
+      <button role="tab" aria-selected="false" data-plan="B">플랜 B<span class="sub">실내·테마</span></button>
+    </div>
+    <div class="planline"><span class="dot"></span><span id="planLead"></span></div>
+    <nav class="quicknav" id="quicknav" aria-label="날짜 바로가기"></nav>
+  </div>
+
+  <section class="mapwrap">
+    <div class="maphead">
+      <h2>지도에서 한눈에</h2>
+      <button class="locbtn" id="locbtn">📍 내 위치</button>
+    </div>
+    <div class="mapfilters" id="mapfilters">
+      <button data-mf="일정" aria-pressed="true">🗺 일정 장소</button>
+      <button data-mf="맛집" aria-pressed="false">🍽 맛집</button>
+      <button data-mf="카페" aria-pressed="false">☕ 카페</button>
+      <button data-mf="명소" aria-pressed="false">📸 명소·해변</button>
+      <button data-mf="전체" aria-pressed="false">전체</button>
+    </div>
+    <div id="map"></div>
+    <div class="mapnote" id="mapnote" style="display:none"></div>
+  </section>
+
+  <section class="nearby" id="nearby" style="display:none">
+    <h3>📍 지금 내 위치에서 가까운 순</h3>
+    <div class="sub" id="nearbySub"></div>
+    <div id="nearbyList"></div>
+  </section>
+
+  <main class="content" id="days"></main>
+
+  <section class="extras">
+    <h2>더 가볼 만한 곳</h2>
+    <p class="lead">지금 노선 근처에서 골라둔 맛집 · 카페 · 사진 명소예요. 일정에 여유가 생기면 하나씩 추가해 보세요.</p>
+    <div class="filters" id="filters">
+      <button data-f="전체" aria-pressed="true">전체</button>
+      <button data-f="맛집" aria-pressed="false">🍽 맛집</button>
+      <button data-f="카페" aria-pressed="false">☕ 카페</button>
+      <button data-f="사진명소" aria-pressed="false">📸 사진 명소</button>
+    </div>
+    <div class="xgrid" id="xgrid"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="check">
+      <h3>출발 전 확인해요</h3>
+      <p>① 해양체험(10:30) 예약이 <b>7/25(금)</b>인지 <b>7/26(토)</b>인지 확인 → 날짜에 맞춰 이틀 순서를 바꾸면 돼요.</p>
+      <p>② 숙소는 <b>함덕·조천</b> 쪽을 추천해요. 공항·체험지·해변이 모두 가깝고, 마지막 날 아침 이동이 편해요.</p>
+      <p>③ 7월 제주는 덥고 소나기가 잦아요. 비 예보가 있으면 그날은 <b>플랜 B(실내)</b>로 바꾸면 안전해요.</p>
+    </div>
+    <b>📍 내 위치</b>를 누르면 지금 있는 곳에서 가까운 순으로 정렬돼요.<br/>
+    카드의 <b>카카오·네이버·구글</b> 버튼으로 바로 길찾기가 열립니다.<br/>즐거운 여행 되세요 🌊
+  </footer>
+
+</div>
+
+<script>
+const CAT = {
+  "체험":{c:"var(--sea)",     bg:"var(--foam)"},
+  "식당":{c:"var(--tangerine)",bg:"var(--tangerine-soft)"},
+  "해변":{c:"var(--sky)",     bg:"#DCEFF7"},
+  "명소":{c:"var(--forest)",  bg:"#E1EEDF"},
+  "카페":{c:"var(--berry)",   bg:"#F4E1EA"},
+  "이동":{c:"var(--gray)",    bg:"#EBE9E0"}
+};
+const XTAG = {"맛집":"var(--tangerine)","카페":"var(--berry)","사진명소":"var(--sky)"};
+
+/* ============================================================
+   카카오 지도 설정 — 아래 값을 본인의 카카오 JavaScript 키로 바꾸세요.
+   카카오 개발자(developers.kakao.com) > 내 애플리케이션 > 앱 키 > "JavaScript 키"
+   그리고 [플랫폼 > Web]에 배포 도메인(예: https://아이디.github.io)을 등록해야
+   지도가 화면에 뜹니다. (키를 안 넣어도 GPS·가까운 순·길찾기는 작동해요)
+   ============================================================ */
+var KAKAO_JS_KEY = "cfafcd3304aec9f2c2f56d21a6163940";
+
+/* 39곳 좌표 (카카오 로컬 API로 미리 확보) [위도,경도] */
+const COORDS = {
+  airport:[33.50684,126.492723], home:[33.543062,126.669239],
+  hamdeok_beach:[33.543062,126.669239], woodonhyang:[33.542504,126.669593],
+  gozibdol:[33.543815,126.663099], leaders:[33.551612,126.652521],
+  kimnyeong_maze:[33.536532,126.772235], sunrise_peak:[33.459135,126.940538],
+  seopjikoji:[33.423938,126.930609], ecoland:[33.447085,126.667351],
+  aqua:[33.433068,126.927846], gwangchigi:[33.452521,126.924193],
+  oneuldo:[33.555137,126.794973], tokimoon:[33.555895,126.795483],
+  w728:[33.559072,126.792282], seongsegi:[33.556858,126.759922],
+  andol:[33.453618,126.754927], woljeong_beach:[33.556469,126.795805],
+  haejang:[33.542426,126.676672], suseonhwa:[33.545188,126.662179],
+  unidam:[33.542491,126.6695], jomnyeo:[33.546484,126.659499],
+  geuttae:[33.542793,126.664696], baengnok:[33.541812,126.672642],
+  jocheon_noodle:[33.536166,126.636898], haenyeochon:[33.553662,126.709881],
+  myeongjin:[33.532471,126.850185], sukja:[33.527428,126.85487],
+  bomal_haewol:[33.492263,126.909632], chunok:[33.558056,126.791593],
+  pyeongdae_sea:[33.534216,126.839836], matna:[33.448601,126.916079],
+  paldo:[33.437521,126.91991], cheonghaewon:[33.436731,126.920626],
+  gyeongmine:[33.461227,126.933404], boryong:[33.448007,126.915217],
+  seowoobong:[33.545842,126.677586], bijarim:[33.490408,126.809988],
+  sangumburi:[33.432574,126.693832], sehwa_beach:[33.525144,126.860256]
+};
+
+/* 카카오 장소 ID (place.map.kakao.com/ID) */
+const KID = {
+  airport:10808261,hamdeok_beach:8148451,woodonhyang:840240885,gozibdol:28082185,
+  leaders:24769484,kimnyeong_maze:17110921,sunrise_peak:25285071,seopjikoji:8413659,
+  ecoland:17184223,aqua:23150855,gwangchigi:13723499,oneuldo:1138154447,tokimoon:927947271,
+  w728:2107668553,seongsegi:24325332,andol:82389937,woljeong_beach:17600274,haejang:1785595019,
+  suseonhwa:1724232299,unidam:638581736,jomnyeo:25038501,geuttae:1226016260,baengnok:1588830770,
+  jocheon_noodle:177981921,haenyeochon:16525337,myeongjin:20031551,sukja:556924957,
+  bomal_haewol:8615207,chunok:1444465544,pyeongdae_sea:26915450,matna:8970084,paldo:1057105002,
+  cheonghaewon:1943641853,gyeongmine:21931852,boryong:10375136,seowoobong:25280784,
+  bijarim:7912085,sangumburi:21348535,sehwa_beach:7964223
+};
+
+/* 장소 메타데이터 — 이름/분류/지역/네이버 리뷰 키워드/메모 (네이버 조사 기반) */
+const DB = {
+  woodonhyang:{name:"함덕흑돼지우돈향",cat:"식당",area:"함덕",kw:["오션뷰","흑돼지","고등어쌈밥","전복밥"]},
+  gozibdol:{name:"고집돌우럭 함덕점",cat:"식당",area:"함덕",kw:["오션뷰","우럭조림","전복","점심 14:50마감"],note:"낮 영업 마감 이르니 서두르기"},
+  leaders:{name:"국제리더스클럽 (해양체험)",cat:"체험",area:"조천",kw:["예약필수","물고기밥주기","반잠수함","아이·어르신편함"]},
+  matna:{name:"맛나식당 (성산 갈치조림)",cat:"식당",area:"성산 고성리",kw:["갈치조림","가성비","양많음","웨이팅","재료소진마감"],note:"수·일 휴무 → 7/26(일) 불가 · 08:30~14:30 점심만",conf:"high"},
+  // 함덕·조천·북촌 맛집
+  haejang:{name:"해장살롱 함덕본점",cat:"식당",area:"함덕",kw:["차돌해장국","넓은매장","유아의자","아침영업"],note:"영업시간·휴무 미확인 — 방문 전 확인",conf:"high"},
+  suseonhwa:{name:"수선화식당 함덕점",cat:"식당",area:"함덕",kw:["보말파스타","오션뷰","아이랑","양식"],note:"영업시간·브레이크타임 미확인",conf:"high"},
+  unidam:{name:"우니담 제주함덕점",cat:"식당",area:"함덕",kw:["성게비빔밥","4층오션뷰","친절"],note:"리뷰 표본 적음 · 영업시간 미확인",conf:"medium"},
+  jomnyeo:{name:"좀녀해녀촌",cat:"식당",area:"함덕",kw:["성게보말죽","전복죽","전용주차"],note:"평점 3.9 · 물회는 아이 부적합",conf:"medium"},
+  geuttae:{name:"제주흑돼지 함덕그때그집",cat:"식당",area:"함덕",kw:["흑돼지","김치찌개","콜키지무료","아이OK"],note:"매주 수요일 휴무(여행기간 무관)",conf:"high"},
+  baengnok:{name:"백록집 제주함덕점",cat:"식당",area:"함덕",kw:["고등어회","신선함","어른위주"],note:"아이 동반은 비추천 · 영업시간 미확인",conf:"medium"},
+  jocheon_noodle:{name:"조천면장국수",cat:"식당",area:"조천",kw:["고기국수","가성비","회전빠름","몸국"],note:"로컬 국숫집 · 영업시간 미확인",conf:"medium"},
+  haenyeochon:{name:"해녀촌 (동복)",cat:"식당",area:"동복(북촌 옆)",kw:["회국수","성게국수","오션뷰","주차편함"],note:"함덕서 차 8분 · 영업시간 미확인",conf:"medium"},
+  // 구좌 맛집
+  myeongjin:{name:"명진전복",cat:"식당",area:"구좌 평대",kw:["전복돌솥밥","어르신픽","웨이팅","주차편함"],note:"화요일 휴무(여행기간 영업) · 아날로그 대기",conf:"high"},
+  sukja:{name:"숙자네숟가락젓가락 세화본점",cat:"식당",area:"구좌 세화",kw:["통갈치","가성비","양많음","어르신동반"],note:"구좌 리뷰 1위 · 휴무 미확인",conf:"high"},
+  bomal_haewol:{name:"보말칼국수 해월정",cat:"식당",area:"구좌 종달",kw:["보말칼국수","08시오픈","넓은매장","아침식사"],note:"함덕→성산 길목 아침 최적",conf:"high"},
+  chunok:{name:"이춘옥원조고등어쌈밥 월정점",cat:"식당",area:"구좌 월정",kw:["고등어묵은지찜","유아의자","발렛파킹","왕돈까스"],note:"수요일 휴무설 — 방문 전 확인",conf:"high"},
+  pyeongdae_sea:{name:"평대성게국수",cat:"식당",area:"구좌 평대",kw:["성게국수","협소(5테이블)","웨이팅"],note:"월요일 휴무 → 7/27(월) 불가 · 점심만",conf:"medium"},
+  // 성산 맛집
+  paldo:{name:"성산 팔도식당갈치조림 섭지코지본점",cat:"식당",area:"성산 섭지코지",kw:["갈치조림","통갈치서비스","섭지코지최근접","가성비"],note:"아쿠아플라넷 3분 · 휴무 미확인",conf:"high"},
+  cheonghaewon:{name:"제주로운청해원 성산일출봉점",cat:"식당",area:"성산 신양",kw:["1인정식","예약가능","유아의자","넓은매장"],note:"각자 메뉴 선택 가능 · 피크엔 네이버예약",conf:"high"},
+  gyeongmine:{name:"경미네집",cat:"식당",area:"성산일출봉 앞",kw:["해물라면","성게밥","전복죽","친절"],note:"08:30~16:00 · 일출봉 전후",conf:"medium"},
+  boryong:{name:"보룡제과",cat:"식당",area:"성산 고성",kw:["마늘바게트","빵맛집","가성비","주차없음"],note:"맛나식당 바로 앞 · 간식·차량용",conf:"high"},
+  // 카페
+  oneuldo:{name:"오늘도화창",cat:"카페",area:"월정리",kw:["바닷가카페","당근케이크","한라봉차","친절"]},
+  tokimoon:{name:"토키문 (토끼문)",cat:"카페",area:"월정리",kw:["토끼테마","루프탑","흑임자라떼","오션뷰"]},
+  w728:{name:"W728 카페",cat:"카페",area:"월정리",kw:["루프탑빈백","오션뷰","한라봉스무디"]},
+  // 관광지
+  sunrise_peak:{name:"성산일출봉",cat:"명소",area:"성산",kw:["인생샷","가파른계단","정상뷰","그늘없음"],note:"정상 계단 많음 → 어르신은 아래 산책로 · 입장 5,000원",conf:"high"},
+  seopjikoji:{name:"섭지코지",cat:"명소",area:"성산",kw:["산책하기좋음","드라마촬영지","등대뷰","그늘없음"],note:"평탄해 어르신 편함 · 주차 유료",conf:"high"},
+  gwangchigi:{name:"광치기해변",cat:"해변",area:"성산",kw:["썰물이끼","물때중요","일출봉뷰","미끄러움"],note:"이끼 절경은 썰물 때만 · 무료",conf:"high"},
+  aqua:{name:"아쿠아플라넷 제주",cat:"명소",area:"성산",kw:["국내최대수조","실내시원함","아이최애","공연시간표"],note:"전구간 실내 → 더위·비 최적 · 온라인 예매",conf:"high"},
+  kimnyeong_maze:{name:"김녕미로공원",cat:"명소",area:"구좌 김녕",kw:["미로","아이신남","고양이많음","경사완만"],note:"휠체어·유모차 대여 · 입장 있음",conf:"high"},
+  ecoland:{name:"에코랜드 테마파크",cat:"명소",area:"조천",kw:["기차관람","곶자왈숲","걷기최소","비와도좋음"],note:"걷기 거의 없어 어르신 최적 · 입장료 미확인",conf:"medium"},
+  hamdeok_beach:{name:"함덕해수욕장",cat:"해변",area:"함덕",kw:["에메랄드바다","수심얕음","아이물놀이","무장애해변"],note:"편의시설 풍부 · 파라솔 유료",conf:"high"},
+  seowoobong:{name:"서우봉 둘레길",cat:"명소",area:"함덕",kw:["완만한흙길","바다뷰","정자쉼터","숲그늘"],note:"숙소 도보권 · 유모차는 부적합",conf:"high"},
+  woljeong_beach:{name:"월정리해변",cat:"해변",area:"월정리",kw:["카페거리","감성사진","수심얕음","주차어려움"],note:"성수기 주차난 → 오전 일찍",conf:"high"},
+  seongsegi:{name:"김녕성세기해변",cat:"해변",area:"구좌 김녕",kw:["한적함","이국적","수심얕음","주차넓음"],note:"무료 주차·샤워장 · 그늘막 지참",conf:"high"},
+  bijarim:{name:"비자림",cat:"명소",area:"구좌",kw:["피톤치드","숲그늘시원","평탄한흙길","유모차가능(A코스)"],note:"한여름 더위 피난 1순위 · A코스만 권장",conf:"high"},
+  andol:{name:"안돌오름 비밀의숲",cat:"명소",area:"송당",kw:["편백나무숲","인생샷","비포장진입로","주차협소"],note:"비온 뒤 질척 · 어르신 비추천 · 입장 있음",conf:"high"},
+  sangumburi:{name:"산굼부리",cat:"명소",area:"조천 교래",kw:["분화구","완만한오르막","전망좋음","그늘적음"],note:"에코랜드 근처 · 이른 시간 권장",conf:"high"},
+  sehwa_beach:{name:"세화해변",cat:"해변",area:"구좌 세화",kw:["한적함","물차가움","벨롱장","조용함"],note:"규모 작아 어르신 여유 · 벨롱장 개장일 확인",conf:"high"}
+};
+
+/* 일정 stop 이름 → 좌표/DB 키 매핑 (stop 데이터를 안 건드리기 위해) */
+const STOP_ID = {
+  "제주국제공항 도착 · 렌터카":"airport", "제주국제공항 (출발)":"airport",
+  "함덕흑돼지우돈향":"woodonhyang", "국제리더스클럽 (해양체험)":"leaders",
+  "고집돌우럭 함덕점":"gozibdol", "함덕해수욕장":"hamdeok_beach",
+  "김녕미로공원":"kimnyeong_maze", "성산일출봉":"sunrise_peak",
+  "갈치조림맛집 (성산 고성리)":"matna", "섭지코지":"seopjikoji",
+  "함덕 숙소 복귀":"home", "에코랜드 테마파크":"ecoland", "아쿠아플라넷 제주":"aqua"
+};
+
+/* extras(더 가볼 곳) 카드 → DB 키 매핑 */
+const XID = {
+  "오늘도화창":"oneuldo","토키문 (Tokimoon)":"tokimoon","W728 카페 & 하우스":"w728",
+  "함덕흑돼지우돈향":"woodonhyang","고집돌우럭 함덕점":"gozibdol","갈치조림맛집":"matna",
+  "김녕성세기해변":"seongsegi","안돌오름 비밀의숲":"andol","월정리해변":"woljeong_beach","광치기해변":"gwangchigi",
+  "우진해장국":null,"맛나식당":"matna","명진전복":"myeongjin","김녕 해맞이쉼터":null,
+  "델문도":null,"카페 공작소":null,"비자림":"bijarim","산굼부리":"sangumburi",
+  "서우봉 둘레길":"seowoobong","세화해변":"sehwa_beach",
+  "해장살롱 함덕본점":"haejang","수선화식당 함덕점":"suseonhwa","제주흑돼지 함덕그때그집":"geuttae",
+  "숙자네숟가락젓가락 세화본점":"sukja","보말칼국수 해월정":"bomal_haewol","이춘옥원조고등어쌈밥 월정점":"chunok",
+  "성산 팔도식당갈치조림 섭지코지본점":"paldo","제주로운청해원 성산일출봉점":"cheonghaewon","보룡제과":"boryong"
+};
+
+/* ---- 좌표/키워드/길찾기 헬퍼 ---- */
+function coordOf(idOrName){
+  const id = COORDS[idOrName] ? idOrName : (STOP_ID[idOrName] || XID[idOrName]);
+  return id && COORDS[id] ? {id, ll:COORDS[id]} : null;
+}
+function kwHtml(kw){
+  if(!kw || !kw.length) return "";
+  const warn = /미확인|휴무|불가|마감|웨이팅|주차없음|비추천|미끄|계단|그늘없|주차어려|협소|비포장/;
+  return `<div class="kws">${kw.map(k=>`<span class="kw${warn.test(k)?' warn':''}">${k}</span>`).join("")}</div>`;
+}
+function navRow(name, ll){
+  if(!ll) return "";
+  const [lat,lng]=ll, nm=encodeURIComponent(name);
+  const kakao=`https://map.kakao.com/link/to/${nm},${lat},${lng}`;
+  const naver=`https://map.naver.com/p/search/${nm}`;
+  const google=`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  return `<div class="nav-row">
+    <a class="nav-btn kakao" href="${kakao}" target="_blank" rel="noopener">🗺 카카오 길찾기</a>
+    <a class="nav-btn naver" href="${naver}" target="_blank" rel="noopener">네이버</a>
+    <a class="nav-btn google" href="${google}" target="_blank" rel="noopener">구글</a>
+  </div>`;
+}
+function haversine(a,b){
+  const R=6371, r=Math.PI/180;
+  const dlat=(b[0]-a[0])*r, dlng=(b[1]-a[1])*r;
+  const x=Math.sin(dlat/2)**2 + Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dlng/2)**2;
+  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+}
+function eta(km){ // 제주 평균 40km/h 가정
+  const min=Math.max(1,Math.round(km/40*60));
+  return `차 약 ${min}분`;
+}
+
+function mapUrl(p){
+  const q = encodeURIComponent(p.name);
+  if(p.pid) return `https://www.google.com/maps/search/?api=1&query=${q}&query_place_id=${p.pid}`;
+  if(p.ll)  return `https://www.google.com/maps/search/?api=1&query=${p.ll}`;
+  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+}
+
+/* 숙소: 표시는 "함덕 숙소", 길찾기는 함덕해변 좌표로 (정확한 숙소 주소가 정해지면 s 값만 바꾸세요) */
+const HOME = {name:"함덕 숙소", s:"33.5432,126.6697"};
+
+const PLANS = {
+  A:{
+    lead:"바다·오름·해안 산책 중심의 <b>제주다운 풍경</b> 루트. 이동은 조금 있지만 뷰가 최고예요.",
+    days:[
+      {n:"DAY 1",iso:"2026-07-24",date:"7/24 (목) · 도착",title:"제주 입성 & 함덕 노을",drive:"약 30분 · 25km",stops:[
+        {t:"16:40",cat:"이동",name:"제주국제공항 도착 · 렌터카",s:"제주국제공항",d:"짐 찾고 렌터카 받으면 5시 넘어요. 함덕 숙소까지 차로 25분.",ll:"33.5066,126.4928"},
+        {t:"18:30",cat:"식당",name:"함덕흑돼지우돈향",d:"함덕해변 오션뷰 흑돼지집. 저녁 먹고 해변 야경 산책하면 첫날로 딱이에요.",pid:"ChIJbZmjH8kfDTUR8T6yKnbJqe8",leg:{m:25,km:22}}
+      ]},
+      {n:"DAY 2",iso:"2026-07-25",date:"7/25 (금) · 해양체험 + 북동부",title:"바다 체험과 미로",from:HOME,drive:"약 45분 · 30km",stops:[
+        {t:"10:30",cat:"체험",name:"국제리더스클럽 (해양체험)",s:"국제리더스클럽",d:"예약하신 곳! 물고기 밥주기·반잠수함 등 아이·어른 모두 편해요.",pid:"ChIJdSClZQQfDTURLt3-3V0DZlI",leg:{m:10,km:5}},
+        {t:"12:30",cat:"식당",name:"고집돌우럭 함덕점",d:"오션뷰 우럭조림. 낮 영업 2시 50분 마감이니 조금 서두르세요.",pid:"ChIJ00PR6XYfDTURlkix8j-OnkQ",leg:{m:10,km:5}},
+        {t:"14:00",cat:"해변",name:"함덕해수욕장",d:"물이 얕고 잔잔해 아이 물놀이 안전. 수영복·수건 챙기기!",pid:"ChIJMbJyapkeDTURkIp6l1JoLfY",leg:{m:3,km:0.4,walk:true}},
+        {t:"15:30",cat:"명소",name:"김녕미로공원",d:"함덕에서 15분. 미로·게임·고양이로 아이들 신나요. 65세 이상 할인.",pid:"ChIJ85Mt99EZDTURwVDY56YZxzs",leg:{m:15,km:12}}
+      ]},
+      {n:"DAY 3",iso:"2026-07-26",date:"7/26 (토) · 동부 자연",title:"성산과 바다 절벽",from:HOME,drive:"약 1시간 50분 · 100km",stops:[
+        {t:"09:30",cat:"명소",name:"성산일출봉",d:"아침 일찍 시원할 때! 아이·부모는 정상 계단, 장모님은 아래 산책로·카페에서 쉬셔도 좋아요.",pid:"ChIJn3jj9rkUDTURS7YjOgUyUVU",leg:{m:45,km:40}},
+        {t:"12:30",cat:"식당",name:"갈치조림맛집 (성산 고성리)",s:"제주 성산 고성리 갈치조림맛집",d:"갈치조림에 갈치구이까지 나오는 가성비 집. 아이·어르신과 먹기 좋아요.",pid:"ChIJX7T3RYoTDTURtteBsYYlDTI",leg:{m:8,km:4}},
+        {t:"14:00",cat:"명소",name:"섭지코지",d:"바다 끼고 평평한 산책길. 유모차·어르신 모두 편해요. 근처 광치기해변도 예뻐요.",pid:"ChIJ-5DfghYTDTUR8RaKuI4FID4",leg:{m:12,km:8}},
+        {t:"16:30",cat:"이동",name:"함덕 숙소 복귀",s:"함덕해수욕장",d:"돌아오는 길에 김녕·월정리 카페를 한 곳 들르면 딱 좋아요.",ll:"33.5432,126.6697",leg:{m:50,km:45}}
+      ]},
+      {n:"DAY 4",iso:"2026-07-27",date:"7/27 (일) · 출발",title:"공항으로",from:HOME,drive:"약 30분 · 25km",stops:[
+        {t:"07:45",cat:"이동",name:"제주국제공항 (출발)",s:"제주국제공항",d:"9:30 비행기. 7시엔 숙소를 나서고 렌터카 반납 시간까지 고려해 서두르세요.",ll:"33.5066,126.4928",leg:{m:25,km:22}}
+      ]}
+    ]
+  },
+  B:{
+    lead:"걷기 적고 실내 많은 <b>더위·비 대비</b> 루트. 어르신은 덜 지치고 아이 체험 만족도가 높아요.",
+    days:[
+      {n:"DAY 1",iso:"2026-07-24",date:"7/24 (목) · 도착",title:"제주 입성 & 함덕 노을",drive:"약 30분 · 25km",stops:[
+        {t:"16:40",cat:"이동",name:"제주국제공항 도착 · 렌터카",s:"제주국제공항",d:"렌터카 받고 함덕 숙소로 25분. 가는 길에 마트 장보면 편해요.",ll:"33.5066,126.4928"},
+        {t:"18:30",cat:"식당",name:"함덕흑돼지우돈향",d:"함덕해변 오션뷰 흑돼지집으로 첫날 축하!",pid:"ChIJbZmjH8kfDTUR8T6yKnbJqe8",leg:{m:25,km:22}}
+      ]},
+      {n:"DAY 2",iso:"2026-07-25",date:"7/25 (금) · 해양체험 + 에코랜드",title:"바다 체험과 숲속 기차",from:HOME,drive:"약 1시간 · 45km",stops:[
+        {t:"10:30",cat:"체험",name:"국제리더스클럽 (해양체험)",s:"국제리더스클럽",d:"예약하신 해양체험!",pid:"ChIJdSClZQQfDTURLt3-3V0DZlI",leg:{m:10,km:5}},
+        {t:"12:30",cat:"식당",name:"고집돌우럭 함덕점",d:"오션뷰 우럭조림. 낮 영업 2시 50분 마감 주의.",pid:"ChIJ00PR6XYfDTURlkix8j-OnkQ",leg:{m:10,km:5}},
+        {t:"14:00",cat:"해변",name:"함덕해수욕장",d:"잠깐 물놀이하고 오후엔 에코랜드로.",pid:"ChIJMbJyapkeDTURkIp6l1JoLfY",leg:{m:3,km:0.4,walk:true}},
+        {t:"15:30",cat:"명소",name:"에코랜드 테마파크",d:"숲속을 꼬마 기차로 도는 곳! 걷기가 거의 없어 장모님께 제일 편하고 아이들은 기차를 좋아해요. 7시 마감.",pid:"ChIJ8UZkwTsDDTURZ8J20iKdqI0",leg:{m:25,km:18}}
+      ]},
+      {n:"DAY 3",iso:"2026-07-26",date:"7/26 (토) · 아쿠아플라넷 + 성산",title:"실내 아쿠아리움",from:HOME,drive:"약 1시간 50분 · 105km",stops:[
+        {t:"10:00",cat:"명소",name:"아쿠아플라넷 제주",d:"대형 실내 아쿠아리움. 비·더위 걱정 없이 아이들이 제일 좋아해요. 공연 시간 맞춰 가면 좋아요.",pid:"ChIJw6cLOWwTDTUR6cEPiE2sSKQ",leg:{m:50,km:45}},
+        {t:"13:00",cat:"식당",name:"갈치조림맛집 (성산 고성리)",s:"제주 성산 고성리 갈치조림맛집",d:"근처 가성비 갈치조림집에서 점심.",pid:"ChIJX7T3RYoTDTURtteBsYYlDTI",leg:{m:10,km:6}},
+        {t:"14:30",cat:"명소",name:"섭지코지",d:"아쿠아플라넷 바로 옆! 점심 후 가벼운 바다 산책. 더우면 짧게만.",pid:"ChIJ-5DfghYTDTUR8RaKuI4FID4",leg:{m:10,km:7}},
+        {t:"16:30",cat:"이동",name:"함덕 숙소 복귀",s:"함덕해수욕장",d:"비가 오면 김녕미로공원 대신 실내 카페에서 쉬어가도 좋아요.",ll:"33.5432,126.6697",leg:{m:50,km:45}}
+      ]},
+      {n:"DAY 4",iso:"2026-07-27",date:"7/27 (일) · 출발",title:"공항으로",from:HOME,drive:"약 30분 · 25km",stops:[
+        {t:"07:45",cat:"이동",name:"제주국제공항 (출발)",s:"제주국제공항",d:"9:30 비행기. 7시엔 숙소 출발.",ll:"33.5066,126.4928",leg:{m:25,km:22}}
+      ]}
+    ]
+  }
+};
+
+const EXTRAS = [
+  {cat:"카페",name:"오늘도화창",area:"월정리",d:"별점 4.9의 아늑한 바닷가 카페. 당근케이크와 한라봉차가 시그니처, 사장님이 친절해요.",pid:"ChIJUzmaru0XDTURuCP2kghmnL0"},
+  {cat:"카페",name:"토키문 (Tokimoon)",area:"월정리",d:"토끼 테마 루프탑 카페. 흑임자 라떼·말차 크림라떼가 유명하고 옥상에서 바다가 보여요.",pid:"ChIJQVrvUfMXDTURK_peEsid5wc"},
+  {cat:"카페",name:"W728 카페 & 하우스",area:"월정리",d:"루프탑 빈백에서 오션뷰를 즐기는 곳. 한라봉 스무디가 인기예요.",pid:"ChIJ2W8IUbUXDTURixEJOn1Fs_E"},
+  {cat:"맛집",name:"함덕흑돼지우돈향",area:"함덕",d:"함덕해변이 한눈에 보이는 오션뷰 흑돼지집. 고등어쌈밥·전복밥도 좋아요.",pid:"ChIJbZmjH8kfDTUR8T6yKnbJqe8"},
+  {cat:"맛집",name:"고집돌우럭 함덕점",area:"함덕",d:"제주 대표 우럭조림·전복 세트. 바다 보며 먹는 한상. 낮 2:50 마감 주의.",pid:"ChIJ00PR6XYfDTURlkix8j-OnkQ"},
+  {cat:"맛집",name:"갈치조림맛집",area:"성산 고성리",d:"갈치조림에 갈치구이까지 나오는 가성비 집. 아이·부모님과 먹기 좋아요.",pid:"ChIJX7T3RYoTDTURtteBsYYlDTI"},
+  {cat:"사진명소",name:"김녕성세기해변",area:"김녕",d:"하얀 모래 + 풍력발전기 + 에메랄드빛 바다. '몰디브 같다'는 인생샷 명소예요.",pid:"ChIJnWoxZkcYDTURJT2wzlzI5eM"},
+  {cat:"사진명소",name:"안돌오름 비밀의숲",area:"송당",d:"쭉쭉 뻗은 편백나무 숲. 웨딩·가족 사진 성지로 유명해요. (입장료 있음, 진입로 비포장)",pid:"ChIJGQm5FWgbDTURrK0Um9tLBOA"},
+  {cat:"사진명소",name:"월정리해변",area:"월정리",d:"민트빛 바다와 예쁜 카페거리. 아이는 바다에서 놀고 어른은 카페에서 쉬기 좋아요.",pid:"ChIJxR5oOuwXDTUR7OVyfNv5QT4"},
+  {cat:"사진명소",name:"광치기해변",area:"성산",d:"썰물 때 드러나는 이끼 바위와 성산일출봉 배경이 한 컷에! 섭지코지 근처예요.",ll:"33.4499,126.9256"},
+
+  /* --- 추가 맛집 --- */
+  {cat:"맛집",name:"우진해장국",area:"제주시",d:"고사리육개장으로 전국구인 집. 공항에서 15분이라 첫날 도착·마지막 날 아침에 좋아요. 웨이팅 각오.",d2:"아이도 잘 먹는 순한 맛"},
+  {cat:"맛집",name:"맛나식당",area:"성산",d:"성산 갈치조림·고등어조림의 대표 맛집. 성산일출봉 일정과 붙이기 좋아요. 브레이크타임 확인 필수.",d2:"성산 코스와 세트"},
+  {cat:"맛집",name:"명진전복",area:"구좌 평대",d:"전복돌솥밥 명가. 어르신 입맛에 특히 좋아요. 대기 길 수 있으니 11시 전 도착 추천.",d2:"함덕에서 25분"},
+  {cat:"맛집",name:"김녕 해맞이쉼터",area:"김녕",d:"김녕미로공원 근처 해물칼국수·보말칼국수. 미로공원 다녀와 늦은 점심으로 딱이에요.",d2:"미로공원 5분"},
+
+  /* --- 추가 카페 --- */
+  {cat:"카페",name:"델문도",area:"함덕",d:"함덕해변 바로 앞 대형 로스터리 카페. 숙소에서 걸어갈 수 있고 밤늦게까지 열어 야식 커피로 좋아요.",d2:"숙소 도보권"},
+  {cat:"카페",name:"카페 공작소",area:"조천",d:"조용한 로컬 감성 카페. 이동 중 어르신 쉬어가기 좋은 자리 배치예요.",d2:"이동 중 휴식"},
+
+  /* --- 추가 둘러볼 곳 --- */
+  {cat:"사진명소",name:"비자림",area:"구좌 평대",d:"천년 비자나무 숲길. 바닥이 평탄해 유모차·어르신도 편하고, 한여름에도 시원해요. 더운 날 1순위 대안.",d2:"더위 피난처"},
+  {cat:"사진명소",name:"산굼부리",area:"조천 교래",d:"분화구 위 평탄한 산책로. 함덕에서 30분이고 뷰가 시원해요. 에코랜드와 같은 방향.",d2:"에코랜드 근처"},
+  {cat:"사진명소",name:"서우봉 둘레길",area:"함덕",d:"함덕해변 옆 낮은 오름. 20~30분이면 해변 전경 인생샷. 아침·해질녘이 시원하고 예뻐요.",d2:"숙소 도보권"},
+  {cat:"사진명소",name:"세화해변",area:"구좌 세화",d:"한적하고 물빛 고운 해변. 5일장(5·10일)이 서면 구경거리도 많아요.",d2:"월정리에서 10분"},
+
+  /* === 동선별 네이버 맛집 (조사 결과) === */
+  // 함덕·조천 (숙소 근처)
+  {cat:"맛집",name:"해장살롱 함덕본점",area:"함덕",d:"차돌 소고기 해장국. 넓고 인테리어 좋고 유아의자·단체 OK라 아이+어르신에 가장 안전한 아침집.",d2:"숙소 도보권"},
+  {cat:"맛집",name:"수선화식당 함덕점",area:"함덕",d:"보말파스타 등 양식. 초등생에 무난하면서 제주색. 오션뷰.",d2:"양식 대안"},
+  {cat:"맛집",name:"제주흑돼지 함덕그때그집",area:"함덕",d:"흑돼지 반반세트 + 김치찌개·볶음밥. 고기 못 먹는 아이도 해결. 콜키지 무료.",d2:"수요일 휴무"},
+  // 구좌 (김녕·월정·세화 방면)
+  {cat:"맛집",name:"숙자네숟가락젓가락 세화본점",area:"구좌 세화",d:"통갈치구이+갈치조림 한상. 구좌권 리뷰 1위, 어르신 동반 후기 최다.",d2:"어르신 강추"},
+  {cat:"맛집",name:"보말칼국수 해월정",area:"구좌 종달",d:"아침 8시 오픈 보말칼국수. 함덕→성산 이동 중 아침식사 최적, 넓고 자극 없음.",d2:"아침·이동 길목"},
+  {cat:"맛집",name:"이춘옥원조고등어쌈밥 월정점",area:"구좌 월정",d:"고등어묵은지찜. 유아의자·발렛·왕돈까스까지 있어 아이+어르신 인프라 최상.",d2:"가족 인프라 최상"},
+  // 성산 (일출봉·섭지코지 방면)
+  {cat:"맛집",name:"성산 팔도식당갈치조림 섭지코지본점",area:"성산 섭지코지",d:"갈치조림 주문 시 통갈치구이 서비스. 아쿠아플라넷 3분·섭지코지 5분으로 동선 최근접.",d2:"아쿠아·섭지 최근접"},
+  {cat:"맛집",name:"제주로운청해원 성산일출봉점",area:"성산 신양",d:"1인 정식세트라 각자 메뉴 선택 가능. 유아의자·예약·주차 완비, 5인+어르신에 무난.",d2:"예약 추천"},
+  {cat:"맛집",name:"보룡제과",area:"성산 고성",d:"마늘바게트로 유명한 빵집. 맛나식당 바로 앞이라 웨이팅 중 들르거나 차량 간식용.",d2:"맛나식당 앞"}
+];
+
+const MAPICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
+
+function catChip(cat){
+  const m = CAT[cat];
+  return `<span class="cat" style="color:${m.c};background:${m.bg}">${cat}</span>`;
+}
+
+/* 로컬 기준 오늘 (toISOString은 UTC라 새벽에 하루 어긋남) */
+const TODAY = (()=>{ const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+})();
+
+/* 구간 길찾기 (출발지 → 도착지) */
+function dirUrl(from,to){
+  return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(from)}`
+       + `&destination=${encodeURIComponent(to)}&travelmode=driving`;
+}
+/* 하루 전체를 구글 지도 다중 경유 경로로 */
+function dayRouteUrl(day){
+  const pts = day.stops.map(target);
+  const origin = day.from ? target(day.from) : pts.shift();
+  const dest = pts.pop();
+  if(!dest) return dirUrl(origin, origin);
+  const way = pts.length ? `&waypoints=${pts.map(encodeURIComponent).join('%7C')}` : "";
+  return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}`
+       + `&destination=${encodeURIComponent(dest)}${way}&travelmode=driving`;
+}
+
+/* label = 화면에 보이는 이름, target = 지도 검색어(s가 있으면 그것, 없으면 이름) */
+const label  = p => (typeof p === "string" ? p : p.name);
+const target = p => (typeof p === "string" ? p : (p.s || p.name));
+
+function legRow(stop, from){
+  if(!stop.leg || !from) return "";
+  const ic = stop.leg.walk ? "🚶" : "🚗";
+  const km = stop.leg.km < 1 ? `${Math.round(stop.leg.km*1000)}m` : `${stop.leg.km}km`;
+  return `<div class="leg">
+    <span class="car">${ic}</span>
+    <span><b>${label(from)}</b>에서 약 <b>${stop.leg.m}분</b> · ${km}</span>
+    <a href="${dirUrl(target(from), target(stop))}" target="_blank" rel="noopener">길찾기</a>
+  </div>`;
+}
+
+function renderDays(planKey){
+  const plan = PLANS[planKey];
+  document.getElementById('planLead').innerHTML = plan.lead;
+  const el = document.getElementById('days');
+
+  el.innerHTML = plan.days.map((day,di)=>{
+    let prev = day.from || null;
+    const stops = day.stops.map(s=>{
+      const transit = s.cat==="이동" ? " transit" : "";
+      const leg = legRow(s, prev);
+      prev = s;
+      const co = coordOf(s.name);
+      const meta = co && DB[co.id] ? DB[co.id] : null;
+      const kws = meta ? kwHtml(meta.kw) : "";
+      const metaNote = meta && meta.note ? `<div class="daynote" style="margin-top:8px"><span class="ic">ⓘ</span><span>${meta.note}</span></div>` : "";
+      const nav = co ? navRow(s.name, co.ll) : "";
+      return `<div class="stop${transit}">
+        <div class="card">
+          <div class="top">${s.t?`<span class="time">${s.t}</span>`:""}${catChip(s.cat)}</div>
+          <div class="name">${s.name}</div>
+          <div class="desc">${s.d}</div>
+          ${kws}${metaNote}${nav}
+        </div>
+        ${leg}
+      </div>`;
+    }).join("");
+
+    const divider = di < plan.days.length-1
+      ? `<svg class="wave-div" viewBox="0 0 460 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0,8 C50,2 90,14 150,8 C210,2 250,14 310,8 C370,2 410,14 460,8" fill="none" stroke="currentColor" stroke-width="2"/></svg>`
+      : "";
+    const isToday = day.iso === TODAY ? " today" : "";
+    return `<section class="day${isToday}" id="day${di}">
+      <div class="day-head"><span class="day-num">${day.n}</span><span class="day-title">${day.title}</span></div>
+      <div class="day-date">${day.date}</div>
+      <div class="daysum">
+        <span>📍 ${day.stops.length}곳</span>
+        <span>🚗 총 ${day.drive}</span>
+        <a href="${dayRouteUrl(day)}" target="_blank" rel="noopener">하루 경로 한번에 열기</a>
+      </div>
+      <div class="stops">${stops}</div>
+    </section>${divider}`;
+  }).join("");
+
+  // 날짜 퀵내비
+  document.getElementById('quicknav').innerHTML = plan.days.map((d,i)=>
+    `<a href="#day${i}" class="${d.iso===TODAY?'now':''}">${d.date.split(' ·')[0]}</a>`
+  ).join("");
+
+  // 오늘이 여행 중이면 오늘 일정으로 스크롤
+  const todayEl = el.querySelector('.day.today');
+  if(todayEl) todayEl.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* D-day */
+(function(){
+  const start = new Date("2026-07-24T00:00:00");
+  const now = new Date(TODAY+"T00:00:00");
+  const diff = Math.round((start-now)/86400000);
+  const box = document.getElementById('dday');
+  if(diff > 0)      box.textContent = `✈️ 출발까지 D-${diff}`;
+  else if(diff >= -3) box.textContent = `🌊 여행 ${-diff+1}일차 진행 중`;
+  else              box.style.display = "none";
+})();
+
+function renderExtras(filter){
+  const list = filter==="전체" ? EXTRAS : EXTRAS.filter(x=>x.cat===filter);
+  document.getElementById('xgrid').innerHTML = list.map(x=>{
+    const id = XID[x.name];
+    const meta = id && DB[id] ? DB[id] : null;
+    const kws = meta ? kwHtml(meta.kw) : "";
+    const co = id && COORDS[id] ? COORDS[id] : (x.ll ? x.ll.split(',').map(Number) : null);
+    const nav = co ? navRow(x.name, co) : "";
+    return `
+    <div class="xcard">
+      <div class="xhead">
+        <span class="xtag" style="background:${XTAG[x.cat]}">${x.cat}</span>
+        <span class="xarea">📍 ${x.area}</span>
+      </div>
+      <div class="xname">${x.name}</div>
+      <div class="xdesc">${x.d}</div>
+      ${x.d2?`<div class="xnote">💡 ${x.d2}</div>`:""}
+      ${kws}${nav}
+    </div>`;}).join("");
+}
+
+// plan toggle
+document.querySelectorAll('.seg button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-selected','false'));
+    btn.setAttribute('aria-selected','true');
+    renderDays(btn.dataset.plan);
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+// filters
+document.querySelectorAll('#filters button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#filters button').forEach(b=>b.setAttribute('aria-pressed','false'));
+    btn.setAttribute('aria-pressed','true');
+    renderExtras(btn.dataset.f);
+  });
+});
+
+/* ============================================================
+   카카오 지도 · 현재 위치 · 내 주변
+   ============================================================ */
+const CATHEX={식당:"#EE7B39",카페:"#B15479",명소:"#3F7D50",해변:"#2E93C0",체험:"#0F8A82",이동:"#7C7A70"};
+const NAME_EXTRA={airport:"제주국제공항",home:"함덕 숙소"};
+const KEY_OK=/^[0-9a-f]{32}$/i.test(KAKAO_JS_KEY);
+let MAP=null, OVERLAYS=[], MEOV=null, ME=null, curFilter="일정";
+
+function catOf(id){ return (DB[id]&&DB[id].cat)||(id==="airport"?"이동":id==="home"?"이동":"명소"); }
+function nameOf(id){ return (DB[id]&&DB[id].name)||NAME_EXTRA[id]||id; }
+
+function placesForFilter(mf){
+  const foods=[],cafes=[],spots=[];
+  Object.keys(DB).forEach(id=>{
+    const c=DB[id].cat;
+    if(c==="식당")foods.push(id); else if(c==="카페")cafes.push(id);
+    else if(c==="명소"||c==="해변")spots.push(id);
+  });
+  if(mf==="맛집")return foods;
+  if(mf==="카페")return cafes;
+  if(mf==="명소")return spots;
+  if(mf==="일정"){ const s=new Set(Object.values(STOP_ID)); s.add("airport");
+    return [...s].filter(id=>COORDS[id]); }
+  return Object.keys(COORDS).filter(id=>id!=="home");
+}
+
+function drawMarkers(){
+  if(!MAP)return;
+  OVERLAYS.forEach(o=>o.setMap(null)); OVERLAYS=[];
+  const ids=placesForFilter(curFilter);
+  const bounds=new kakao.maps.LatLngBounds();
+  ids.forEach(id=>{
+    const ll=COORDS[id]; if(!ll)return;
+    const pos=new kakao.maps.LatLng(ll[0],ll[1]);
+    const hex=CATHEX[catOf(id)]||"#0F8A82";
+    const el=document.createElement('div');
+    el.className='pin'; el.style.background=hex; el.title=nameOf(id);
+    el.addEventListener('click',()=>{
+      document.querySelectorAll('.pin.sel').forEach(p=>p.classList.remove('sel'));
+      el.classList.add('sel');
+      if(KID[id]) window.open('https://place.map.kakao.com/'+KID[id],'_blank');
+    });
+    const ov=new kakao.maps.CustomOverlay({position:pos,content:el,zIndex:2});
+    ov.setMap(MAP); OVERLAYS.push(ov); bounds.extend(pos);
+  });
+  if(ME) bounds.extend(new kakao.maps.LatLng(ME[0],ME[1]));
+  if(ids.length) MAP.setBounds(bounds);
+}
+
+function initMap(){
+  const el=document.getElementById('map');
+  const note=document.getElementById('mapnote');
+  if(!KEY_OK){
+    el.style.display='none';
+    note.style.display='flex';
+    note.innerHTML=`<span>⚠️</span><span><b>카카오 지도 키를 넣으면 여기에 지도가 떠요.</b><br>
+      코드 상단 <code>KAKAO_JS_KEY</code> 값을 카카오 개발자 <b>JavaScript 키</b>로 바꾸고,
+      [플랫폼 &gt; Web]에 배포 주소를 등록하세요.<br>
+      키가 없어도 아래 <b>📍 내 위치 · 가까운 순 · 길찾기</b>는 모두 작동합니다.</span>`;
+    return;
+  }
+  const s=document.createElement('script');
+  s.src=`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_JS_KEY}&autoload=false&libraries=services`;
+  s.onload=()=>kakao.maps.load(()=>{
+    MAP=new kakao.maps.Map(el,{center:new kakao.maps.LatLng(33.5,126.72),level:9});
+    let firstDraw=false;
+    kakao.maps.event.addListener(MAP,'tilesloaded',()=>{ if(!firstDraw){firstDraw=true; MAP.relayout(); drawMarkers();} });
+    drawMarkers();
+  });
+  s.onerror=()=>{ el.style.display='none'; note.style.display='flex';
+    note.innerHTML='<span>⚠️</span><span>지도 SDK를 불러오지 못했어요. 인터넷 연결 또는 도메인 등록을 확인하세요. (내 위치·길찾기는 정상 작동)</span>'; };
+  document.head.appendChild(s);
+}
+
+// 지도 필터
+document.querySelectorAll('#mapfilters button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#mapfilters button').forEach(b=>b.setAttribute('aria-pressed','false'));
+    btn.setAttribute('aria-pressed','true');
+    curFilter=btn.dataset.mf; drawMarkers();
+  });
+});
+
+// 현재 위치
+function markMe(){
+  if(!MAP||!ME)return;
+  if(MEOV)MEOV.setMap(null);
+  const el=document.createElement('div'); el.className='pin me'; el.title='내 위치';
+  MEOV=new kakao.maps.CustomOverlay({position:new kakao.maps.LatLng(ME[0],ME[1]),content:el,zIndex:9});
+  MEOV.setMap(MAP);
+  MAP.setCenter(new kakao.maps.LatLng(ME[0],ME[1]));
+  MAP.setLevel(7);
+}
+function renderNearby(){
+  const box=document.getElementById('nearby');
+  const listEl=document.getElementById('nearbyList');
+  const sub=document.getElementById('nearbySub');
+  if(!ME){ box.style.display='none'; return; }
+  const rows=Object.keys(DB).map(id=>({id,d:haversine(ME,COORDS[id])}))
+    .sort((a,b)=>a.d-b.d).slice(0,8);
+  sub.textContent='탭하면 카카오맵 길찾기가 열려요. (직선거리 기준)';
+  listEl.innerHTML=rows.map((r,i)=>{
+    const m=DB[r.id], ll=COORDS[r.id], hex=CATHEX[m.cat]||"#0F8A82";
+    const km=r.d<1?`${Math.round(r.d*1000)}m`:`${r.d.toFixed(1)}km`;
+    const route=`https://map.kakao.com/link/from/내위치,${ME[0]},${ME[1]}/to/${encodeURIComponent(m.name)},${ll[0]},${ll[1]}`;
+    return `<div class="ncard">
+      <div class="rank">${i+1}</div>
+      <div class="info">
+        <div class="nm">${m.name}<span class="badge" style="background:${hex}">${m.cat}</span></div>
+        <div class="met"><b>${km}</b> · ${eta(r.d)} · 📍 ${m.area}</div>
+      </div>
+      <a class="go" href="${route}" target="_blank" rel="noopener">길찾기</a>
+    </div>`;}).join("");
+  box.style.display='block';
+}
+document.getElementById('locbtn').addEventListener('click',()=>{
+  const btn=document.getElementById('locbtn');
+  if(!navigator.geolocation){ alert('이 브라우저는 위치를 지원하지 않아요.'); return; }
+  btn.classList.add('loading'); btn.textContent='📍 찾는 중…';
+  navigator.geolocation.getCurrentPosition(pos=>{
+    ME=[pos.coords.latitude,pos.coords.longitude];
+    btn.classList.remove('loading'); btn.textContent='📍 내 위치 갱신';
+    markMe(); renderNearby();
+    document.getElementById('nearby').scrollIntoView({behavior:'smooth',block:'start'});
+  },err=>{
+    btn.classList.remove('loading'); btn.textContent='📍 내 위치';
+    const fileMode=location.protocol==='file:';
+    alert(fileMode
+      ? '현재 위치는 https로 올린 페이지에서만 켜져요. (지금은 로컬 파일이라 막혀 있어요)\n\n배포 후 다시 눌러 주세요.'
+      : '위치 권한이 거부됐어요. 브라우저 설정에서 이 페이지의 위치 접근을 허용해 주세요.');
+  },{enableHighAccuracy:true,timeout:10000,maximumAge:60000});
+});
+
+renderDays('A');
+renderExtras('전체');
+initMap();
+</script>
+</body>
+</html>

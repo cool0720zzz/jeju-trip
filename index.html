@@ -380,10 +380,12 @@
       <button class="locbtn" id="locbtn">📍 내 위치</button>
     </div>
     <div class="mapfilters" id="mapfilters">
-      <button data-mf="일정" aria-pressed="true">🗺 일정 장소</button>
+      <button data-mf="일정" aria-pressed="true">🗺 일정</button>
+      <button data-mf="남부" aria-pressed="false">🌊 남부</button>
+      <button data-mf="동남부" aria-pressed="false">🏝 동남부</button>
+      <button data-mf="서남부" aria-pressed="false">⛰ 서남부</button>
+      <button data-mf="북부" aria-pressed="false">🚗 북부</button>
       <button data-mf="맛집" aria-pressed="false">🍽 맛집</button>
-      <button data-mf="카페" aria-pressed="false">☕ 카페</button>
-      <button data-mf="명소" aria-pressed="false">📸 명소·해변</button>
       <button data-mf="전체" aria-pressed="false">전체</button>
     </div>
     <div id="map"></div>
@@ -481,7 +483,30 @@ const COORDS = {
   sudduri:[33.251568,126.424999], deomjang:[33.257735,126.408134],
   daepodongsan:[33.239091,126.439491], sagye_abalone:[33.24842,126.303144],
   sanbang_choga:[33.240656,126.300204], sagyebada:[33.227874,126.303798],
-  sanbang_sikdang:[33.223461,126.254213]
+  sanbang_sikdang:[33.223461,126.254213],
+  // --- 남부 시내 추가 ---
+  lee_street:[33.24586,126.564873], seobok:[33.244862,126.570887],
+  geolmae:[33.249778,126.554851], chilsimni:[33.244014,126.55764],
+  gidang:[33.244889,126.551197], jaguri:[33.241747,126.567383],
+  sojeongbang:[33.245226,126.577635], sonammeori:[33.243396,126.569759],
+  healing_forest:[33.311506,126.458754], submarine:[33.239201,126.558423],
+  dombenang:[33.239502,126.533096], honeymoon:[33.244155,126.578713],
+  // --- 동남부 (남원·표선) ---
+  keuneong:[33.27335,126.70371], gongcheonpo:[33.266086,126.640591],
+  pyoseon_beach:[33.327511,126.837425], minsokchon:[33.322396,126.842297],
+  seongeup:[33.38496,126.801499], jeongseok:[33.392298,126.724047],
+  joranmal:[33.383097,126.736285], gongcheonpo_sik:[33.266389,126.642585],
+  keuneong_sik:[33.275521,126.676815], gwoendangne:[33.278446,126.718362],
+  wimi_hoe:[33.270675,126.66448], childonga:[33.325864,126.84407],
+  // --- 서남부 (안덕·대정·모슬포) ---
+  songaksan:[33.199083,126.289791], hwasun_beach:[33.240032,126.333589],
+  andeok_valley:[33.257202,126.352583], bangju:[33.305049,126.387439],
+  bontae:[33.303771,126.39248], aerospace:[33.30435,126.299794],
+  shinhwa:[33.304944,126.316401], gotjawal:[33.288946,126.27172],
+  unjin:[33.210068,126.258282], daejeong_market:[33.220458,126.248355],
+  miyoungine:[33.217744,126.249829], hanggu_sik:[33.219154,126.2511],
+  mulkkureok:[33.220173,126.251366], sagye_heukdwaeji:[33.248155,126.302427],
+  budu_sik:[33.218932,126.250999]
 };
 
 /* 카카오 장소 ID (place.map.kakao.com/ID) */
@@ -501,7 +526,8 @@ const KID = {
   eongtto:8008273,sambo:11486940,negeori:9733194,cheonjitgol:12501703,ssangdungi:11600257,
   gwanchon:8656455,oneunjeong:8453998,saekdal:17809788,sukseongdo:204534740,sudduri:1148098112,
   deomjang:8258838,daepodongsan:9711307,sagye_abalone:2011590693,sanbang_choga:12974776,
-  sagyebada:10447497,sanbang_sikdang:10437289
+  sagyebada:10447497,sanbang_sikdang:10437289,
+  lee_street:8045145,seobok:10507362,geolmae:8168650,chilsimni:1635665898,gidang:8194422,jaguri:25413887,sojeongbang:7964906,sonammeori:12151918,healing_forest:8375194,submarine:7940952,dombenang:10303208,honeymoon:775734317,keuneong:2083466041,gongcheonpo:10145930,pyoseon_beach:8640631,minsokchon:8063566,seongeup:12501794,jeongseok:456229536,joranmal:18574207,gongcheonpo_sik:8204729,keuneong_sik:242688763,gwoendangne:1297845544,wimi_hoe:659473718,childonga:26418624,songaksan:7956367,hwasun_beach:8173573,andeok_valley:8001026,bangju:27004813,bontae:18539729,aerospace:19585161,shinhwa:1416818260,gotjawal:27254363,unjin:1292299003,daejeong_market:18525728,miyoungine:9006988,hanggu_sik:11892463,mulkkureok:11692307,sagye_heukdwaeji:839453362,budu_sik:9025009
 };
 
 /* 장소 메타데이터 — 이름/분류/지역/네이버 리뷰 키워드/메모 (네이버 조사 기반) */
@@ -583,7 +609,52 @@ const DB = {
   sagye_beach:{name:"사계해변 · 형제섬",cat:"해변",area:"안덕 사계",kw:["산방산뷰","형제섬조망","올레10코스","백사장산책","사진명소"],note:"무료 · 물놀이 아님(샤워실 없음) · 평탄 산책 · 일몰 명소",conf:"medium"},
   camellia:{name:"카멜리아힐",cat:"명소",area:"안덕",kw:["여름수국","유모차가능","숲길그늘","주차무료","산책로김"],note:"성인 10,000원 · 산책로 김 → 쉼터서 나눠 쉬기 · 숲그늘 많음",conf:"high"},
   osulloc:{name:"오설록 티뮤지엄",cat:"카페",area:"안덕 서광",kw:["무료입장","녹차밭","실내박물관·카페","주차무료","디저트"],note:"무료 · 실내 카페·박물관 → 폭염·소나기 대피 좋음 · 여름 웨이팅",conf:"high"},
-  eongtto:{name:"엉또폭포",cat:"명소",area:"서귀포 강정",kw:["비온뒤만","건천폭포","평소물없음","평탄산책로"],note:"무료 · 비 70mm+ 온 직후만 물줄기 → 평소 헛걸음 주의 · 강수 확인",conf:"medium"}
+  eongtto:{name:"엉또폭포",cat:"명소",area:"서귀포 강정",kw:["비온뒤만","건천폭포","평소물없음","평탄산책로"],note:"무료 · 비 70mm+ 온 직후만 물줄기 → 평소 헛걸음 주의 · 강수 확인",conf:"medium"},
+
+  /* ===== 남부 시내 추가 스팟 ===== */
+  lee_street:{name:"이중섭거리 · 미술관",cat:"명소",area:"서귀포 시내",kw:["예술거리","이중섭미술관","올레시장인접","완만산책"],note:"미술관 1,500원·월 휴관 · 거리는 무료 · 그늘 적음"},
+  seobok:{name:"서복전시관 · 서복공원",cat:"명소",area:"서귀포 시내",kw:["서복전설","바다전망","공원무료","정방폭포연계","넓은주차"],note:"정방폭포 바로 옆 · 요금·시간 미확인"},
+  geolmae:{name:"걸매생태공원",cat:"명소",area:"서귀포 시내",kw:["무료","넓은주차","데크산책","습지생태","유모차편함"],note:"평지 데크라 어르신·유모차 최적 · 천지연 상류"},
+  chilsimni:{name:"칠십리시공원",cat:"명소",area:"서귀포 시내",kw:["야경","새연교조망","음악분수","무료","저녁산책"],note:"저녁이 시원 · 새연교 야경과 연계"},
+  gidang:{name:"기당미술관",cat:"명소",area:"서귀포 시내",kw:["시립미술관","실내관람","폭염대피","저렴","조용함"],note:"1,000원·월 휴관 · 실내 냉방이라 비·더위 대피"},
+  jaguri:{name:"자구리해안",cat:"명소",area:"서귀포 시내",kw:["해안산책","조각작품","문섬조망","작가의산책길"],note:"일부 바위·계단 · 그늘 적어 아침·저녁 추천"},
+  sojeongbang:{name:"소정방폭포",cat:"명소",area:"서귀포 시내",kw:["해안폭포","여름물맞이","바위지형"],note:"바위 계단 내려감 → 어르신·유모차 부적합 · 미끄럼주의"},
+  sonammeori:{name:"소남머리",cat:"명소",area:"서귀포 시내",kw:["숨은명소","문섬조망","조용한산책","일몰"],note:"바위·경사 · 안전난간 미비 구간 아이 손잡기"},
+  healing_forest:{name:"서귀포자연휴양림",cat:"명소",area:"서귀포 근교",kw:["숲그늘시원","무장애데크","편백·삼나무","넓은주차"],note:"무장애 숲길은 유모차 OK · 시내서 차 20분 · 더위 피난"},
+  submarine:{name:"서귀포잠수함",cat:"명소",area:"서귀포 시내",kw:["실내체험","바닷속관람","아이인기","예약필수","우천무관"],note:"성인 55,000원·사전예약 · 승·하선 계단 유의"},
+  dombenang:{name:"돔베낭길 · 황우지선녀탕",cat:"명소",area:"서귀포 시내",kw:["올레7코스","해안절경","가파른계단","낙석출입제한"],note:"황우지선녀탕 출입제한 여부 확인 · 계단 가파름"},
+  honeymoon:{name:"허니문하우스",cat:"카페",area:"서귀포 시내",kw:["오션뷰통창","넓은주차","올레산책","당근케이크"],note:"구 파라다이스호텔 · 소정방폭포 연계 · 실내 냉방석"},
+
+  /* ===== 동남부 (쇠소깍·남원·표선) ===== */
+  keuneong:{name:"큰엉해안경승지",cat:"명소",area:"남원",kw:["한반도포토존","해안산책로","기암절벽","인생샷","무료"],note:"그늘 없음 → 모자·물 필수 · 이른 오전 추천"},
+  gongcheonpo:{name:"공천포",cat:"명소",area:"남원 공천포",kw:["조용한포구","물회거리","바다뷰","한적함"],note:"물회·식사 연계용 · 현무암 미끄럼 주의"},
+  pyoseon_beach:{name:"표선해수욕장",cat:"해변",area:"표선",kw:["얕은수심","자연풀장","넓은백사장","가족물놀이","무료주차"],note:"아이 물놀이 최적 · 백사장 그늘 적어 파라솔 권장"},
+  minsokchon:{name:"제주민속촌",cat:"명소",area:"표선",kw:["전통초가","포토존","동물체험","여름수국","체험관"],note:"부지 넓어 도보량 많음 → 장모님 무리 주의 · 성인 15,000원"},
+  seongeup:{name:"성읍민속마을",cat:"명소",area:"표선 성읍",kw:["초가집","실거주마을","돌하르방","무료","넓은주차"],note:"평탄해 어르신 무난 · 상업 호객 주의"},
+  jeongseok:{name:"정석항공관",cat:"명소",area:"표선 가시리",kw:["대한항공","항공전시","실내박물관","아이교육"],note:"실내 → 폭염·우천 대안 · 운영시간·요금 미확인"},
+  joranmal:{name:"조랑말체험공원",cat:"명소",area:"표선 가시리",kw:["조랑말","승마체험","먹이주기","초원뷰","박물관"],note:"화요일 휴관 · 초지 그늘 적음 · 박물관 2,000원"},
+  gongcheonpo_sik:{name:"공천포식당",cat:"식당",area:"남원 공천포",kw:["제주식물회","시원한육수","바다뷰","현지인","자리물회"],note:"10~19:30·목 휴무(확인) · 물회라 여름·어르신 무난"},
+  keuneong_sik:{name:"큰엉식당",cat:"식당",area:"남원",kw:["가성비","푸짐","물회","흑돼지","조림"],note:"큰엉해안 인근 · 메뉴 다양 · 영업시간 미확인"},
+  gwoendangne:{name:"괸당네식당",cat:"식당",area:"남원",kw:["로컬분위기","흑돼지구이","지실국수","전골"],note:"향토음식 · 영업시간 미확인"},
+  wimi_hoe:{name:"위미항 활어회센터",cat:"식당",area:"남원 위미",kw:["신선활어","항구뷰","회","계절생선"],note:"수급 따라 변동 · 일요일 휴무 가능 · 미확인"},
+  childonga:{name:"칠돈가 표선",cat:"식당",area:"표선",kw:["흑돼지","숙성고기","반찬푸짐","가족외식"],note:"표선해변·민속촌 연계 · 주말 저녁 대기 · 미확인"},
+
+  /* ===== 서남부 (중문 서쪽·안덕·대정·모슬포) ===== */
+  songaksan:{name:"송악산 둘레길",cat:"명소",area:"대정 상모리",kw:["해안절경","데크산책로","마라도·형제섬조망","무료","완만함","그늘부족"],note:"왕복 2.8km·그늘 없음 → 이른 오전·모자·물"},
+  hwasun_beach:{name:"화순금모래해수욕장",cat:"해변",area:"안덕 화순",kw:["금빛모래","산방산뷰","노을명소","가족물놀이","주차편리"],note:"그늘·파라솔 제한 · 샤워시설 확인"},
+  andeok_valley:{name:"안덕계곡",cat:"명소",area:"안덕 감산",kw:["상록수림그늘","계곡비경","천연기념물","무료","계단많음"],note:"숲그늘 시원하나 계단·암반 미끄럼 → 어르신 주의·유모차불가"},
+  bangju:{name:"방주교회",cat:"명소",area:"안덕 상천",kw:["이타미준건축","물위교회","사진명소","무료","조용함"],note:"예배 시간 관람제한 · 평지 · 그늘 없음"},
+  bontae:{name:"본태박물관",cat:"명소",area:"안덕 상천",kw:["안도다다오건축","무한거울방","정원뷰","실내","도슨트"],note:"성인 30,000원 · 실내 냉방 · 정원 경사 일부"},
+  aerospace:{name:"제주항공우주박물관",cat:"명소",area:"안덕 서광",kw:["실물항공기","조종석체험","5D영상관","아이만족","실내냉방","규모큼"],note:"성인 10,000원·전관 실내 → 한여름·우천 최적"},
+  shinhwa:{name:"제주신화월드",cat:"명소",area:"안덕 서광",kw:["놀이기구","라바테마","자유이용권","리조트","신장제한"],note:"야외 라이드는 한여름 힘듦 → 어르신은 실내 위주 · 요금 미확인"},
+  gotjawal:{name:"곶자왈도립공원",cat:"명소",area:"대정 신평",kw:["원시숲","짙은그늘","데크길","저렴","힐링","유모차불가"],note:"성인 1,000원·숲그늘 시원 · 데크 좁아 유모차불가 · 16시 입장마감"},
+  unjin:{name:"운진항 (가파도·마라도 배편)",cat:"명소",area:"대정 모슬포",kw:["가파도·마라도배편","배예약필수","기상결항","국토최남단"],note:"배편 반드시 사전예약·당일 운항확인 · 성수기 매진"},
+  daejeong_market:{name:"대정오일시장",cat:"명소",area:"대정 하모",kw:["1·6일장","향토먹거리","저렴","전통시장","주차"],note:"매월 1·6일 개장(7/26=6일 예상) · 노천 더위"},
+  miyoungine:{name:"미영이네식당",cat:"식당",area:"대정 모슬포",kw:["고등어회","신선함","현지인","점심웨이팅","회+탕세트"],note:"모슬포항 · 점심 웨이팅 · 회 못먹는 아이는 구이/탕"},
+  hanggu_sik:{name:"항구식당",cat:"식당",area:"대정 모슬포",kw:["갈치조림","자리물회","가성비","다양한생선"],note:"방어는 겨울철 · 여름엔 물회·갈치조림 · 휴무 미확인"},
+  mulkkureok:{name:"물꾸럭식당",cat:"식당",area:"대정 모슬포",kw:["된장물회","문어","도민맛집","여름별미"],note:"여름 물회 별미 · 매운맛 호불호 · 영업시간 미확인"},
+  sagye_heukdwaeji:{name:"사계흑돼지 산방산본점",cat:"식당",area:"안덕 사계",kw:["흑돼지","숯불구이","유아의자","야외놀이터","반찬리필","가족단체"],note:"아이 놀이터·동물 → 가족 최적 · 산방산 연계 · 미확인"},
+  budu_sik:{name:"부두식당",cat:"식당",area:"대정 모슬포",kw:["갈치조림","조림전문","30년전통","물회","현지인"],note:"모슬포항 · 당일 품절·웨이팅 가능 · 미확인"}
 };
 
 /* 일정 stop 이름 → 좌표/DB 키 매핑 (stop 데이터를 안 건드리기 위해) */
@@ -636,6 +707,14 @@ function eta(km){ // 제주 평균 40km/h 가정
   const min=Math.max(1,Math.round(km/40*60));
   return `차 약 ${min}분`;
 }
+/* 좌표 기반 권역 자동판정 (숙소 서귀포 기준) */
+function regionOfLL(lat,lng){
+  if(lat>=33.42) return "북부";      // 조천·함덕·구좌·성산 (북부 나들이)
+  if(lng<126.45) return "서남부";    // 중문 서쪽·안덕·대정·모슬포
+  if(lng<126.60) return "남부";      // 서귀포 시내
+  return "동남부";                    // 쇠소깍·남원·표선
+}
+function regionOf(id){ const c=COORDS[id]; return c?regionOfLL(c[0],c[1]):""; }
 
 function mapUrl(p){
   const q = encodeURIComponent(p.name);
@@ -749,7 +828,32 @@ const EXTRAS = [
   {cat:"맛집",name:"고집돌우럭 함덕점",area:"함덕",d:"오션뷰 우럭조림. 해양체험 뒤 함덕 점심으로 딱. 낮 2:50 마감 주의.",d2:"해양체험 점심"},
   {cat:"맛집",name:"해장살롱 함덕본점",area:"함덕",d:"차돌 해장국. 유아의자·단체 OK로 아이+어르신에 안전. 북부 나들이 아침·점심 대안.",d2:"북부 아침"},
   {cat:"사진명소",name:"비자림",area:"구좌",d:"천년 숲길이 시원해 한여름 더위 피난 1순위. 평탄한 A코스면 장모님도 무난.",d2:"북부 더위 피난"},
-  {cat:"사진명소",name:"김녕성세기해변",area:"구좌 김녕",d:"몰디브 같은 에메랄드 바다에 무료 넓은 주차장. 해양체험 근처 물놀이로 좋아요.",d2:"북부 물놀이"}
+  {cat:"사진명소",name:"김녕성세기해변",area:"구좌 김녕",d:"몰디브 같은 에메랄드 바다에 무료 넓은 주차장. 해양체험 근처 물놀이로 좋아요.",d2:"북부 물놀이"},
+
+  /* ===== 남부 시내 추가 (숙소 근처 자투리·저녁) ===== */
+  {cat:"사진명소",name:"걸매생태공원",area:"서귀포 시내",d:"평지 데크 산책로에 넓은 무료주차. 유모차·어르신에 가장 편한 도심 속 습지공원.",d2:"어르신·유모차 최적"},
+  {cat:"사진명소",name:"기당미술관",area:"서귀포 시내",d:"1,000원 시립미술관. 실내 냉방이라 소나기·폭염 대피에 좋아요. 월요일 휴관.",d2:"비·더위 대피"},
+  {cat:"사진명소",name:"이중섭거리 · 미술관",area:"서귀포 시내",d:"올레시장 옆 예술 거리. 완만해 걷기 좋고 미술관은 실내. 저녁 산책·식사 연계.",d2:"올레시장 옆"},
+  {cat:"사진명소",name:"소정방폭포",area:"서귀포 시내",d:"바다 옆 작은 폭포에서 여름 물맞이. 단 바위 계단이라 어르신·유모차는 부적합.",d2:"여름 물맞이"},
+  {cat:"카페",name:"허니문하우스",area:"서귀포 시내",d:"통창 오션뷰 카페(구 파라다이스호텔). 넓은 주차에 당근케이크가 시그니처. 소정방 연계.",d2:"오션뷰 카페"},
+  {cat:"사진명소",name:"서귀포자연휴양림",area:"서귀포 근교",d:"편백·삼나무 숲 그늘이 시원한 더위 피난처. 무장애 데크길은 유모차·어르신 OK.",d2:"더위 피난"},
+
+  /* ===== 동남부 (쇠소깍·남원·표선) ===== */
+  {cat:"사진명소",name:"큰엉해안경승지",area:"남원",d:"한반도 모양으로 뚫린 절벽 포토존. 해안 산책로가 인생샷 명소. 그늘 없어 이른 오전에.",d2:"한반도 포토존"},
+  {cat:"사진명소",name:"표선해수욕장",area:"표선",d:"수심 얕고 잔잔해 아이 물놀이에 최고. 넓은 백사장·무료주차. 파라솔 챙기기.",d2:"아이 물놀이 최적"},
+  {cat:"사진명소",name:"성읍민속마을",area:"표선 성읍",d:"실제 사람이 사는 초가 마을. 평탄해 어르신도 무난하고 무료. 넓은 주차장.",d2:"평탄·무료"},
+  {cat:"사진명소",name:"조랑말체험공원",area:"표선 가시리",d:"아이 승마·먹이주기 체험. 초원 뷰가 예뻐요. 화요일 휴관, 초지라 그늘 적음.",d2:"아이 승마 체험"},
+  {cat:"맛집",name:"공천포식당",area:"남원 공천포",d:"바다 앞 물회 맛집. 시원한 자리·한치물회에 갈치국도 있어 아이 동반 가능. 목요일 휴무.",d2:"여름 물회"},
+  {cat:"맛집",name:"칠돈가 표선",area:"표선",d:"두툼한 숙성 흑돼지구이. 반찬 푸짐해 가족 외식에 좋고 표선해변·민속촌과 동선 연계.",d2:"흑돼지 가족외식"},
+
+  /* ===== 서남부 (안덕·대정·모슬포) ===== */
+  {cat:"사진명소",name:"제주항공우주박물관",area:"안덕 서광",d:"실물 항공기·조종석 체험에 5D영상관까지. 전관 실내 냉방이라 한여름·비 오는 날 최고.",d2:"실내·아이 최애"},
+  {cat:"사진명소",name:"안덕계곡",area:"안덕 감산",d:"상록수림 그늘이 시원한 계곡 비경. 단 계단·암반이 미끄러워 어르신은 천천히. 무료.",d2:"숲 그늘 계곡"},
+  {cat:"사진명소",name:"송악산 둘레길",area:"대정 상모리",d:"마라도·형제섬이 보이는 해안 데크길. 완만하지만 왕복 2.8km에 그늘 없어 이른 오전에.",d2:"해안 절경"},
+  {cat:"사진명소",name:"곶자왈도립공원",area:"대정 신평",d:"짙은 그늘의 원시림 데크 산책(1,000원). 여름에도 시원하나 데크가 좁아 유모차는 불가.",d2:"원시림 그늘"},
+  {cat:"사진명소",name:"화순금모래해수욕장",area:"안덕 화순",d:"산방산을 배경으로 한 금빛 모래 해변. 노을 명소이자 가족 물놀이. 주차 편리.",d2:"산방산 노을"},
+  {cat:"맛집",name:"미영이네식당",area:"대정 모슬포",d:"고등어회로 전국구인 모슬포 맛집. 점심 웨이팅 잦으니 오픈 직후에. 회 못 먹는 아이는 구이·탕.",d2:"고등어회"},
+  {cat:"맛집",name:"사계흑돼지 산방산본점",area:"안덕 사계",d:"흑돼지 숯불구이. 유아의자·야외 놀이터·동물이 있어 아이 동반에 최적. 산방산 동선.",d2:"아이 놀이터"}
 ];
 
 const MAPICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
@@ -798,8 +902,6 @@ function legRow(stop, from){
 /* 이 동선 근처 추천: GPS가 켜져 있으면 내 위치, 아니면 그날 동선 중심 기준으로
    일정에 없는 여분 스팟 3곳을 가까운 순으로 제시 */
 function renderDayReco(day){
-  const pool=(RECO[day.area]||[]).filter(id=>COORDS[id]&&DB[id]);
-  if(!pool.length) return "";
   const stopIds=new Set(day.stops.map(s=>{const c=coordOf(s.name);return c&&c.id;}));
   let anchor=ME;
   if(!anchor){
@@ -809,9 +911,11 @@ function renderDayReco(day){
     if(!pts.length) return "";
     anchor=[pts.reduce((a,p)=>a+p[0],0)/pts.length, pts.reduce((a,p)=>a+p[1],0)/pts.length];
   }
-  const ranked=pool.filter(id=>!stopIds.has(id))
+  // 그 지역(권역)의 일정에 없는 스팟을 가까운 순으로
+  const reg=regionOfLL(anchor[0],anchor[1]);
+  const ranked=Object.keys(DB).filter(id=>regionOf(id)===reg && !stopIds.has(id))
     .map(id=>({id,d:haversine(anchor,COORDS[id])}))
-    .sort((a,b)=>a.d-b.d).slice(0,3);
+    .sort((a,b)=>a.d-b.d).slice(0,4);
   if(!ranked.length) return "";
   const cards=ranked.map(r=>{
     const m=DB[r.id], ll=COORDS[r.id];
@@ -826,7 +930,7 @@ function renderDayReco(day){
       <span class="reco-go">길찾기</span>
     </a>`;
   }).join("");
-  return `<div class="reco"><div class="reco-h">🧭 이 동선 근처 추천 ${ME?'<span class="live">내 위치 기준</span>':''}</div>${cards}</div>`;
+  return `<div class="reco"><div class="reco-h">🧭 이 근처 <b style="color:var(--tangerine)">${reg}</b> 추천 ${ME?'<span class="live">내 위치 기준</span>':''}</div>${cards}</div>`;
 }
 
 function renderDays(planKey){
@@ -945,17 +1049,13 @@ function catOf(id){ return (DB[id]&&DB[id].cat)||(id==="airport"?"이동":id==="
 function nameOf(id){ return (DB[id]&&DB[id].name)||NAME_EXTRA[id]||id; }
 
 function placesForFilter(mf){
-  const foods=[],cafes=[],spots=[];
-  Object.keys(DB).forEach(id=>{
-    const c=DB[id].cat;
-    if(c==="식당")foods.push(id); else if(c==="카페")cafes.push(id);
-    else if(c==="명소"||c==="해변")spots.push(id);
-  });
-  if(mf==="맛집")return foods;
-  if(mf==="카페")return cafes;
-  if(mf==="명소")return spots;
   if(mf==="일정"){ const s=new Set(Object.values(STOP_ID)); s.add("airport");
     return [...s].filter(id=>COORDS[id]); }
+  if(mf==="맛집") return Object.keys(DB).filter(id=>DB[id].cat==="식당");
+  if(mf==="전체") return Object.keys(COORDS).filter(id=>id!=="home");
+  // 권역 필터 (남부/동남부/서남부/북부)
+  if(["남부","동남부","서남부","북부"].includes(mf))
+    return Object.keys(DB).filter(id=>regionOf(id)===mf);
   return Object.keys(COORDS).filter(id=>id!=="home");
 }
 

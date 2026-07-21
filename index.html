@@ -356,6 +356,61 @@
   .reco-info small b{display:inline;color:var(--tangerine)}
   .reco-go{flex:none;font-size:11px;font-weight:700;color:#3A2A00;background:#FEE500;border:1px solid #F2D900;border-radius:8px;padding:5px 9px}
 
+  /* ---------- 상단 탭 ---------- */
+  .tabbar{
+    position:sticky;top:0;z-index:30;display:flex;
+    background:var(--paper);border-bottom:1px solid var(--line);
+  }
+  .tabbar button{
+    flex:1;border:0;cursor:pointer;font-family:inherit;
+    font-size:14px;font-weight:700;color:var(--ink-soft);
+    padding:13px 6px 11px;background:transparent;position:relative;
+    transition:color .18s ease;
+  }
+  .tabbar button[aria-selected="true"]{color:var(--sea-deep)}
+  .tabbar button[aria-selected="true"]::after{
+    content:"";position:absolute;left:16%;right:16%;bottom:0;height:3px;
+    background:var(--sea);border-radius:3px 3px 0 0;
+  }
+  .planbar{top:44px}
+
+  /* ---------- 키워드 테마 추천 ---------- */
+  .nearwrap{padding:18px 16px 40px;background:var(--paper)}
+  .nearhead{font-family:"Gowun Batang",serif;font-size:21px;font-weight:700;margin-bottom:3px}
+  .nearsub{font-size:12.5px;color:var(--ink-soft);margin-bottom:13px;line-height:1.55}
+  .nearsub b{color:var(--sea-deep)}
+  .themechips{display:flex;gap:7px;overflow-x:auto;padding:2px 0 14px;-webkit-overflow-scrolling:touch}
+  .themechips::-webkit-scrollbar{display:none}
+  .themechips button{
+    flex:none;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+    border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+    padding:7px 13px;border-radius:100px;display:flex;align-items:center;gap:5px;
+    transition:all .18s ease;white-space:nowrap;
+  }
+  .themechips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .themechips .n{font-size:10.5px;font-weight:800;opacity:.6}
+  .thgroup{margin-bottom:20px}
+  .thhead{
+    display:flex;align-items:baseline;gap:8px;margin:0 2px 9px;
+    font-size:14.5px;font-weight:800;color:var(--sea-deep);
+  }
+  .thhead span{font-size:11px;font-weight:600;color:var(--gray)}
+  .ncard2{
+    background:var(--card);border:1px solid var(--line);border-radius:15px;
+    padding:13px 14px;box-shadow:var(--shadow);margin-bottom:10px;
+  }
+  .ncard2 .nrow{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+  .ncard2 .nnm{font-size:15px;font-weight:700;color:var(--ink)}
+  .ncard2 .badge{font-size:10px;font-weight:700;color:#fff;padding:2px 7px;border-radius:100px;flex:none}
+  .ncard2 .nmet{font-size:11.8px;color:var(--ink-soft);margin-bottom:2px}
+  .ncard2 .nmet b{color:var(--sea-deep);font-weight:800}
+  .ncard2 .rg{font-size:10.5px;font-weight:700;color:var(--gray);background:var(--sand);padding:1px 7px;border-radius:100px}
+  .ncard2 .nnote{
+    font-size:11.5px;color:#7a3f1c;background:var(--tangerine-soft);
+    padding:6px 10px;border-radius:9px;margin:7px 0 2px;line-height:1.5;
+  }
+  .empty{font-size:12.5px;color:var(--gray);text-align:center;padding:24px}
+
   @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 </head>
@@ -378,6 +433,12 @@
     </svg>
   </header>
 
+  <nav class="tabbar" role="tablist" aria-label="화면 선택">
+    <button role="tab" data-tab="plan" aria-selected="true">🗓 일정</button>
+    <button role="tab" data-tab="near" aria-selected="false">📍 내 주변 추천</button>
+  </nav>
+
+  <div id="tab-plan">
   <div class="planbar">
     <div class="seg" role="tablist" aria-label="여행 플랜 선택">
       <button role="tab" aria-selected="true" data-plan="A">플랜 A<span class="sub">자연·바다</span></button>
@@ -387,43 +448,7 @@
     <nav class="quicknav" id="quicknav" aria-label="날짜 바로가기"></nav>
   </div>
 
-  <section class="mapwrap">
-    <div class="maphead">
-      <h2>지도에서 한눈에</h2>
-      <button class="locbtn" id="locbtn">📍 내 위치</button>
-    </div>
-    <div class="mapfilters" id="mapfilters">
-      <button data-mf="일정" aria-pressed="true">🗺 일정</button>
-      <button data-mf="남부" aria-pressed="false">🌊 남부</button>
-      <button data-mf="동남부" aria-pressed="false">🏝 동남부</button>
-      <button data-mf="서남부" aria-pressed="false">⛰ 서남부</button>
-      <button data-mf="북부" aria-pressed="false">🚗 북부</button>
-      <button data-mf="맛집" aria-pressed="false">🍽 맛집</button>
-      <button data-mf="전체" aria-pressed="false">전체</button>
-    </div>
-    <div id="map"></div>
-    <div class="mapnote" id="mapnote" style="display:none"></div>
-  </section>
-
-  <section class="nearby" id="nearby" style="display:none">
-    <h3>📍 지금 내 위치에서 가까운 순</h3>
-    <div class="sub" id="nearbySub"></div>
-    <div id="nearbyList"></div>
-  </section>
-
   <main class="content" id="days"></main>
-
-  <section class="extras">
-    <h2>더 가볼 만한 곳</h2>
-    <p class="lead">서귀포를 <b>남부(시내) · 동남부(쇠소깍·남원·표선) · 서남부(중문·안덕·대정)</b>로 나눠 골라둔 곳이에요. 지도의 권역 필터, 각 날짜 아래 <b>'이 근처 추천'</b>과 함께 보세요.</p>
-    <div class="filters" id="filters">
-      <button data-f="전체" aria-pressed="true">전체</button>
-      <button data-f="맛집" aria-pressed="false">🍽 맛집</button>
-      <button data-f="카페" aria-pressed="false">☕ 카페</button>
-      <button data-f="사진명소" aria-pressed="false">📸 사진 명소</button>
-    </div>
-    <div class="xgrid" id="xgrid"></div>
-  </section>
 
   <footer class="footer">
     <div class="check">
@@ -432,9 +457,37 @@
       <p>② 마지막 날 <b>9:30 비행기</b>인데 서귀포→공항이 약 1시간이에요. 렌터카 반납까지 고려해 <b>7시엔 숙소를 나서야</b> 안전해요.</p>
       <p>③ 7월 제주는 덥고 소나기가 잦아요. 비 예보면 그날은 <b>플랜 B(실내·숲 그늘)</b>로 바꾸고, <b>용머리해안</b>은 통제가 잦으니 방문 전 전화확인(064-794-2940).</p>
     </div>
-    <b>📍 내 위치</b>를 누르면 지금 있는 곳에서 가까운 순으로 정렬돼요.<br/>
-    카드의 <b>카카오·네이버·구글</b> 버튼으로 바로 길찾기가 열립니다.<br/>즐거운 여행 되세요 🌊
+    위 <b>📍 내 주변 추천</b> 탭에서 지금 있는 곳 기준으로<br/>
+    키워드별 추천 스팟과 길찾기를 볼 수 있어요.<br/>즐거운 여행 되세요 🌊
   </footer>
+  </div><!-- /tab-plan -->
+
+  <div id="tab-near" style="display:none">
+    <section class="mapwrap">
+      <div class="maphead">
+        <h2>지도에서 한눈에</h2>
+        <button class="locbtn" id="locbtn">📍 내 위치</button>
+      </div>
+      <div class="mapfilters" id="mapfilters">
+        <button data-mf="일정" aria-pressed="true">🗺 일정</button>
+        <button data-mf="남부" aria-pressed="false">🌊 남부</button>
+        <button data-mf="동남부" aria-pressed="false">🏝 동남부</button>
+        <button data-mf="서남부" aria-pressed="false">⛰ 서남부</button>
+        <button data-mf="북부" aria-pressed="false">🚗 북부</button>
+        <button data-mf="맛집" aria-pressed="false">🍽 맛집</button>
+        <button data-mf="전체" aria-pressed="false">전체</button>
+      </div>
+      <div id="map"></div>
+      <div class="mapnote" id="mapnote" style="display:none"></div>
+    </section>
+
+    <section class="nearwrap">
+      <h2 class="nearhead">키워드로 골라보기</h2>
+      <div class="nearsub" id="nearSub"></div>
+      <div class="themechips" id="themeChips"></div>
+      <div id="nearList"></div>
+    </section>
+  </div><!-- /tab-near -->
 
 </div>
 
@@ -1036,27 +1089,6 @@ function renderDays(planKey){
   else              box.style.display = "none";
 })();
 
-function renderExtras(filter){
-  const list = filter==="전체" ? EXTRAS : EXTRAS.filter(x=>x.cat===filter);
-  document.getElementById('xgrid').innerHTML = list.map(x=>{
-    const id = XID[x.name] || NAME2ID[x.name];
-    const meta = id && DB[id] ? DB[id] : null;
-    const kws = meta ? kwHtml(meta.kw) : "";
-    const co = id && COORDS[id] ? COORDS[id] : (x.ll ? x.ll.split(',').map(Number) : null);
-    const nav = co ? navRow(x.name, co) : "";
-    return `
-    <div class="xcard">
-      <div class="xhead">
-        <span class="xtag" style="background:${XTAG[x.cat]}">${x.cat}</span>
-        <span class="xarea">📍 ${x.area}</span>
-      </div>
-      <div class="xname">${x.name}</div>
-      <div class="xdesc">${x.d}</div>
-      ${x.d2?`<div class="xnote">💡 ${x.d2}</div>`:""}
-      ${kws}${nav}
-    </div>`;}).join("");
-}
-
 // plan toggle
 document.querySelectorAll('.seg button').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -1064,14 +1096,6 @@ document.querySelectorAll('.seg button').forEach(btn=>{
     btn.setAttribute('aria-selected','true');
     renderDays(btn.dataset.plan);
     window.scrollTo({top:0,behavior:'smooth'});
-  });
-});
-// filters
-document.querySelectorAll('#filters button').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('#filters button').forEach(b=>b.setAttribute('aria-pressed','false'));
-    btn.setAttribute('aria-pressed','true');
-    renderExtras(btn.dataset.f);
   });
 });
 
@@ -1176,28 +1200,93 @@ function markMe(){
   MAP.setCenter(new kakao.maps.LatLng(ME[0],ME[1]));
   MAP.setLevel(7);
 }
-function renderNearby(){
-  const box=document.getElementById('nearby');
-  const listEl=document.getElementById('nearbyList');
-  const sub=document.getElementById('nearbySub');
-  if(!ME){ box.style.display='none'; return; }
-  const rows=Object.keys(DB).map(id=>({id,d:haversine(ME,COORDS[id])}))
-    .sort((a,b)=>a.d-b.d).slice(0,8);
-  sub.textContent='탭하면 카카오맵 길찾기가 열려요. (직선거리 기준)';
-  listEl.innerHTML=rows.map((r,i)=>{
-    const m=DB[r.id], ll=COORDS[r.id], hex=CATHEX[m.cat]||"#0F8A82";
-    const km=r.d<1?`${Math.round(r.d*1000)}m`:`${r.d.toFixed(1)}km`;
-    const route=`https://map.kakao.com/link/from/내위치,${ME[0]},${ME[1]}/to/${encodeURIComponent(m.name)},${ll[0]},${ll[1]}`;
-    return `<div class="ncard">
-      <div class="rank">${i+1}</div>
-      <div class="info">
-        <div class="nm">${m.name}<span class="badge" style="background:${hex}">${m.cat}</span></div>
-        <div class="met"><b>${km}</b> · ${eta(r.d)} · 📍 ${m.area}</div>
-      </div>
-      <a class="go" href="${route}" target="_blank" rel="noopener">길찾기</a>
-    </div>`;}).join("");
-  box.style.display='block';
+/* ============================================================
+   키워드 테마별 추천 (현재 위치 기준)
+   ============================================================ */
+function kwTxt(m){ return (m.kw||[]).join(" "); }
+function kwAll(m){ return kwTxt(m)+" "+(m.note||""); }
+
+const THEMES=[
+  {k:"맛집",   ic:"🍽",  label:"맛집",        t:m=>m.cat==="식당"},
+  {k:"카페",   ic:"☕",  label:"카페",        t:m=>m.cat==="카페"},
+  {k:"바다",   ic:"🌊",  label:"바다·오션뷰",  t:m=>m.cat==="해변"||/오션뷰|바닷가|바다뷰|해안|바다가/.test(kwTxt(m))},
+  {k:"인생샷", ic:"📸",  label:"인생샷",      t:m=>/인생샷|감성사진|포토|촬영지|절경|전망좋|노을|일몰|이국적|뷰맛집/.test(kwTxt(m))},
+  {k:"숲그늘", ic:"🌳",  label:"숲·더위피난",  t:m=>/숲그늘|피톤치드|곶자왈|휴양림|숲|그늘|시원|삼나무|편백/.test(kwTxt(m))},
+  {k:"실내",   ic:"☔",  label:"실내·비올때",  t:m=>/실내|비와도|수조|박물관|미술관|전시|아쿠아/.test(kwTxt(m))},
+  {k:"아이",   ic:"🧒",  label:"아이랑",      t:m=>/아이|어린이|유아의자|물놀이|미로|기차|신남|아이랑/.test(kwTxt(m))},
+  {k:"어르신", ic:"👵",  label:"어르신 편함",  t:m=>/어르신|평탄|완만|걷기최소|무장애|유모차가능|경사완만|넓은매장/.test(kwTxt(m))},
+  {k:"주차",   ic:"🅿️", label:"주차 편함",   t:m=>/주차편함|주차넓|무료주차|전용주차|공영주차|발렛/.test(kwTxt(m))},
+  {k:"체크",   ic:"⏰",  label:"웨이팅·예약",  t:m=>/웨이팅|예약|소진|마감|휴무|브레이크|미확인/.test(kwAll(m))},
+];
+let curTheme="전체";
+
+function nearRows(){
+  const origin = ME || COORDS.home;
+  return Object.keys(DB).filter(id=>COORDS[id])
+    .map(id=>({id,m:DB[id],d:haversine(origin,COORDS[id])}))
+    .sort((a,b)=>a.d-b.d);
 }
+function nearCard(r){
+  const m=r.m, ll=COORDS[r.id], hex=CATHEX[m.cat]||"#0F8A82";
+  const km=r.d<1?`${Math.round(r.d*1000)}m`:`${r.d.toFixed(1)}km`;
+  return `<div class="ncard2">
+    <div class="nrow"><span class="nnm">${m.name}</span><span class="badge" style="background:${hex}">${m.cat}</span></div>
+    <div class="nmet"><b>${km}</b> · ${eta(r.d)} · 📍 ${m.area} <span class="rg">${regionOf(r.id)}</span></div>
+    ${kwHtml(m.kw)}
+    ${m.note?`<div class="nnote">💡 ${m.note}</div>`:""}
+    ${navRow(m.name,ll)}
+  </div>`;
+}
+function renderNear(){
+  const rows=nearRows();
+  document.getElementById('nearSub').innerHTML = ME
+    ? `<b>현재 위치</b> 기준 가까운 순이에요. 키워드를 눌러 골라보세요. (직선거리)`
+    : `아직 위치를 못 잡아서 <b>숙소(서귀포)</b> 기준이에요. 위 <b>📍 내 위치</b>를 누르면 지금 자리 기준으로 바뀝니다.`;
+
+  const chips=[{k:"전체",ic:"✨",label:"전체",n:rows.length}].concat(
+    THEMES.map(t=>({k:t.k,ic:t.ic,label:t.label,n:rows.filter(r=>t.t(r.m)).length})).filter(c=>c.n>0));
+  document.getElementById('themeChips').innerHTML=chips.map(c=>
+    `<button data-th="${c.k}" aria-pressed="${c.k===curTheme}">${c.ic} ${c.label}<span class="n">${c.n}</span></button>`).join("");
+
+  let html="";
+  if(curTheme==="전체"){
+    THEMES.forEach(t=>{
+      const list=rows.filter(r=>t.t(r.m)).slice(0,3);
+      if(!list.length) return;
+      html+=`<div class="thgroup"><div class="thhead">${t.ic} ${t.label}<span>가까운 3곳</span></div>${list.map(nearCard).join("")}</div>`;
+    });
+  }else{
+    const t=THEMES.find(x=>x.k===curTheme);
+    const all=t?rows.filter(r=>t.t(r.m)):[];
+    const list=all.slice(0,15);
+    const cap=all.length>list.length?`총 ${all.length}곳 중 가까운 ${list.length}곳`:`${all.length}곳 · 가까운 순`;
+    html=list.length
+      ? `<div class="thgroup"><div class="thhead">${t.ic} ${t.label}<span>${cap}</span></div>${list.map(nearCard).join("")}</div>`
+      : `<div class="empty">해당하는 곳이 없어요.</div>`;
+  }
+  document.getElementById('nearList').innerHTML=html;
+}
+document.getElementById('themeChips').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-th]'); if(!b) return;
+  curTheme=b.dataset.th; renderNear();
+  document.querySelector('.nearwrap').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+/* ---------- 탭 전환 ---------- */
+let mapInited=false;
+function showTab(which){
+  document.querySelectorAll('.tabbar button').forEach(b=>
+    b.setAttribute('aria-selected', String(b.dataset.tab===which)));
+  document.getElementById('tab-plan').style.display = which==='plan'?'block':'none';
+  document.getElementById('tab-near').style.display = which==='near'?'block':'none';
+  if(which==='near'){
+    if(!mapInited){ mapInited=true; initMap(); }
+    else if(MAP){ setTimeout(()=>{ MAP.relayout(); drawMarkers(); },60); }
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tabbar button').forEach(b=>
+  b.addEventListener('click',()=>showTab(b.dataset.tab)));
 document.getElementById('locbtn').addEventListener('click',()=>{
   const btn=document.getElementById('locbtn');
   if(!navigator.geolocation){ alert('이 브라우저는 위치를 지원하지 않아요.'); return; }
@@ -1205,11 +1294,11 @@ document.getElementById('locbtn').addEventListener('click',()=>{
   navigator.geolocation.getCurrentPosition(pos=>{
     ME=[pos.coords.latitude,pos.coords.longitude];
     btn.classList.remove('loading'); btn.textContent='📍 내 위치 갱신';
-    markMe(); renderNearby();
+    markMe(); renderNear();
     // '이 근처 추천'을 내 위치 기준으로 갱신
     const cp=document.querySelector('.seg button[aria-selected="true"]');
     renderDays(cp?cp.dataset.plan:'A');
-    document.getElementById('nearby').scrollIntoView({behavior:'smooth',block:'start'});
+    document.querySelector('.nearwrap').scrollIntoView({behavior:'smooth',block:'start'});
   },err=>{
     btn.classList.remove('loading'); btn.textContent='📍 내 위치';
     const fileMode=location.protocol==='file:';
@@ -1220,8 +1309,8 @@ document.getElementById('locbtn').addEventListener('click',()=>{
 });
 
 renderDays('A');
-renderExtras('전체');
-initMap();
+renderNear();
+showTab('plan');
 </script>
 </body>
 </html>

@@ -302,6 +302,19 @@
     width:18px;height:18px;background:#2E7DF6;
     box-shadow:0 0 0 6px rgba(46,125,246,.22),0 2px 5px rgba(0,0,0,.3);
   }
+  /* 숙소 마커 (항상 표시·강조) */
+  .pin.home{
+    width:auto;height:auto;border-radius:12px;
+    background:var(--tangerine);color:#fff;border:2px solid #fff;
+    padding:4px 10px 4px 8px;display:flex;align-items:center;gap:4px;
+    font-size:12px;font-weight:800;white-space:nowrap;letter-spacing:.02em;
+    box-shadow:0 3px 12px rgba(238,123,57,.55);
+    animation:homepulse 2s ease-in-out infinite;
+  }
+  @keyframes homepulse{
+    0%,100%{box-shadow:0 3px 12px rgba(238,123,57,.55),0 0 0 0 rgba(238,123,57,.5)}
+    50%{box-shadow:0 3px 12px rgba(238,123,57,.55),0 0 0 12px rgba(238,123,57,0)}
+  }
 
   /* 내 주변 목록 */
   .nearby{padding:14px 16px 4px;background:var(--paper)}
@@ -1068,7 +1081,17 @@ document.querySelectorAll('#filters button').forEach(btn=>{
 const CATHEX={식당:"#EE7B39",카페:"#B15479",명소:"#3F7D50",해변:"#2E93C0",체험:"#0F8A82",이동:"#7C7A70"};
 const NAME_EXTRA={airport:"제주국제공항",home:"함덕 숙소"};
 const KEY_OK=/^[0-9a-f]{32}$/i.test(KAKAO_JS_KEY);
-let MAP=null, OVERLAYS=[], MEOV=null, ME=null, curFilter="일정";
+let MAP=null, OVERLAYS=[], MEOV=null, HOMEOV=null, ME=null, curFilter="일정";
+
+/* 숙소 마커 — 필터와 무관하게 항상 표시 */
+function addHomeMarker(){
+  if(!MAP||HOMEOV) return;
+  const el=document.createElement('div');
+  el.className='pin home'; el.innerHTML='🏠 숙소'; el.title='서귀포 숙소';
+  el.addEventListener('click',()=>{ if(KID.home) window.open('https://place.map.kakao.com/'+KID.home,'_blank'); });
+  HOMEOV=new kakao.maps.CustomOverlay({position:new kakao.maps.LatLng(COORDS.home[0],COORDS.home[1]),content:el,zIndex:8});
+  HOMEOV.setMap(MAP);
+}
 
 function catOf(id){ return (DB[id]&&DB[id].cat)||(id==="airport"?"이동":id==="home"?"이동":"명소"); }
 function nameOf(id){ return (DB[id]&&DB[id].name)||NAME_EXTRA[id]||id; }
@@ -1104,6 +1127,7 @@ function drawMarkers(){
     ov.setMap(MAP); OVERLAYS.push(ov); bounds.extend(pos);
   });
   if(ME) bounds.extend(new kakao.maps.LatLng(ME[0],ME[1]));
+  bounds.extend(new kakao.maps.LatLng(COORDS.home[0],COORDS.home[1])); // 숙소 항상 화면 안에
   if(ids.length) MAP.setBounds(bounds);
 }
 
@@ -1123,8 +1147,9 @@ function initMap(){
   s.src=`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_JS_KEY}&autoload=false&libraries=services`;
   s.onload=()=>kakao.maps.load(()=>{
     MAP=new kakao.maps.Map(el,{center:new kakao.maps.LatLng(33.5,126.72),level:9});
+    addHomeMarker();
     let firstDraw=false;
-    kakao.maps.event.addListener(MAP,'tilesloaded',()=>{ if(!firstDraw){firstDraw=true; MAP.relayout(); drawMarkers();} });
+    kakao.maps.event.addListener(MAP,'tilesloaded',()=>{ if(!firstDraw){firstDraw=true; MAP.relayout(); addHomeMarker(); drawMarkers();} });
     drawMarkers();
   });
   s.onerror=()=>{ el.style.display='none'; note.style.display='flex';

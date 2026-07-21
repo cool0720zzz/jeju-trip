@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0A5D57" />
 <meta name="apple-mobile-web-app-title" content="제주여행" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="description" content="제주 가족여행 일정 · 7.24–7.27 (플랜 A/B, 맛집·카페·사진명소)" />
+<meta name="description" content="제주 가족여행 · 7.24–7.27 · 서귀포 3박 (카카오 지도·현재위치·맛집·명소 키워드)" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A5D57'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%8C%8A%3C/text%3E%3C/svg%3E" />
 <title>제주 가족여행 · 7.24–7.27</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -326,6 +326,23 @@
     background:#FEE500;border:1px solid #F2D900;border-radius:9px;padding:7px 10px;
   }
 
+  /* 이 동선 근처 추천 */
+  .reco{margin:10px 0 2px;background:#F3FAF8;border:1px solid var(--foam);border-radius:14px;padding:12px 13px}
+  .reco-h{font-size:12.5px;font-weight:700;color:var(--sea-deep);margin-bottom:9px;display:flex;align-items:center;gap:6px}
+  .reco-h .live{font-size:10px;font-weight:700;color:#fff;background:var(--sea);padding:1px 7px;border-radius:100px}
+  .reco-card{
+    display:flex;align-items:center;gap:9px;text-decoration:none;
+    background:var(--card);border:1px solid var(--line);border-radius:11px;
+    padding:9px 11px;margin-bottom:7px;
+  }
+  .reco-card:last-child{margin-bottom:0}
+  .reco-dot{flex:none;width:9px;height:9px;border-radius:50%}
+  .reco-info{flex:1;min-width:0}
+  .reco-info b{display:block;font-size:13px;color:var(--ink);font-weight:700}
+  .reco-info small{font-size:11px;color:var(--ink-soft)}
+  .reco-info small b{display:inline;color:var(--tangerine)}
+  .reco-go{flex:none;font-size:11px;font-weight:700;color:#3A2A00;background:#FEE500;border:1px solid #F2D900;border-radius:8px;padding:5px 9px}
+
   @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 </head>
@@ -340,7 +357,7 @@
       <span class="pill">👨‍👩‍👧‍👦 어른 3 · 아이 2</span>
       <span class="pill">🧒 초4 · 초2</span>
       <span class="pill">👵 장모님 동행</span>
-      <span class="pill">🏠 함덕·조천 3박</span>
+      <span class="pill">🏠 서귀포 3박</span>
     </div>
     <div class="dday" id="dday"></div>
     <svg class="wave" viewBox="0 0 460 26" preserveAspectRatio="none" aria-hidden="true">
@@ -383,7 +400,7 @@
 
   <section class="extras">
     <h2>더 가볼 만한 곳</h2>
-    <p class="lead">지금 노선 근처에서 골라둔 맛집 · 카페 · 사진 명소예요. 일정에 여유가 생기면 하나씩 추가해 보세요.</p>
+    <p class="lead">서귀포 남부 위주로 골라둔 맛집 · 카페 · 사진 명소예요. 각 날짜 아래 <b>'이 동선 근처 추천'</b>도 자동으로 떠요.</p>
     <div class="filters" id="filters">
       <button data-f="전체" aria-pressed="true">전체</button>
       <button data-f="맛집" aria-pressed="false">🍽 맛집</button>
@@ -396,9 +413,9 @@
   <footer class="footer">
     <div class="check">
       <h3>출발 전 확인해요</h3>
-      <p>① 해양체험(10:30) 예약이 <b>7/25(금)</b>인지 <b>7/26(토)</b>인지 확인 → 날짜에 맞춰 이틀 순서를 바꾸면 돼요.</p>
-      <p>② 숙소는 <b>함덕·조천</b> 쪽을 추천해요. 공항·체험지·해변이 모두 가깝고, 마지막 날 아침 이동이 편해요.</p>
-      <p>③ 7월 제주는 덥고 소나기가 잦아요. 비 예보가 있으면 그날은 <b>플랜 B(실내)</b>로 바꾸면 안전해요.</p>
+      <p>① <b>해양체험</b>은 북쪽 조천이라 서귀포서 <b>편도 1시간</b>. 둘째 날(7/25)을 통째로 '북부 나들이'로 잡았어요. 예약일이 7/26이면 <b>DAY 2·3을 서로 바꾸면</b> 됩니다.</p>
+      <p>② 마지막 날 <b>9:30 비행기</b>인데 서귀포→공항이 약 1시간이에요. 렌터카 반납까지 고려해 <b>7시엔 숙소를 나서야</b> 안전해요.</p>
+      <p>③ 7월 제주는 덥고 소나기가 잦아요. 비 예보면 그날은 <b>플랜 B(실내·숲 그늘)</b>로 바꾸고, <b>용머리해안</b>은 통제가 잦으니 방문 전 전화확인(064-794-2940).</p>
     </div>
     <b>📍 내 위치</b>를 누르면 지금 있는 곳에서 가까운 순으로 정렬돼요.<br/>
     카드의 <b>카카오·네이버·구글</b> 버튼으로 바로 길찾기가 열립니다.<br/>즐거운 여행 되세요 🌊
@@ -425,9 +442,9 @@ const XTAG = {"맛집":"var(--tangerine)","카페":"var(--berry)","사진명소"
    ============================================================ */
 var KAKAO_JS_KEY = "cfafcd3304aec9f2c2f56d21a6163940";
 
-/* 39곳 좌표 (카카오 로컬 API로 미리 확보) [위도,경도] */
+/* 71곳 좌표 (카카오 로컬 API로 미리 확보) [위도,경도]. home = 서귀포 숙소 */
 const COORDS = {
-  airport:[33.50684,126.492723], home:[33.543062,126.669239],
+  airport:[33.50684,126.492723], home:[33.240586,126.556281],
   hamdeok_beach:[33.543062,126.669239], woodonhyang:[33.542504,126.669593],
   gozibdol:[33.543815,126.663099], leaders:[33.551612,126.652521],
   kimnyeong_maze:[33.536532,126.772235], sunrise_peak:[33.459135,126.940538],
@@ -446,7 +463,25 @@ const COORDS = {
   paldo:[33.437521,126.91991], cheonghaewon:[33.436731,126.920626],
   gyeongmine:[33.461227,126.933404], boryong:[33.448007,126.915217],
   seowoobong:[33.545842,126.677586], bijarim:[33.490408,126.809988],
-  sangumburi:[33.432574,126.693832], sehwa_beach:[33.525144,126.860256]
+  sangumburi:[33.432574,126.693832], sehwa_beach:[33.525144,126.860256],
+  // --- 서귀포 남부 관광지 ---
+  cheonjiyeon:[33.247212,126.554522], jeongbang:[33.244909,126.571526],
+  oedolgae:[33.239034,126.544862], saeyeon:[33.238533,126.558886],
+  olle_market:[33.25015,126.563232], daepo:[33.237985,126.426011],
+  cheonjeyeon:[33.252677,126.418375], yeomiji:[33.252607,126.414259],
+  jungmun_beach:[33.245038,126.411499], soesokkak:[33.252516,126.623443],
+  sanbangsan:[33.241564,126.31337], yongmeori:[33.23166,126.314724],
+  sagye_beach:[33.228658,126.308598], camellia:[33.290337,126.36819],
+  osulloc:[33.30592,126.28949], eongtto:[33.268532,126.499965],
+  // --- 서귀포 남부 맛집 ---
+  sambo:[33.24768,126.559072], negeori:[33.248492,126.559291],
+  cheonjitgol:[33.248238,126.561304], ssangdungi:[33.246568,126.562927],
+  gwanchon:[33.249271,126.559326], oneunjeong:[33.249596,126.567621],
+  saekdal:[33.241812,126.386243], sukseongdo:[33.262797,126.395412],
+  sudduri:[33.251568,126.424999], deomjang:[33.257735,126.408134],
+  daepodongsan:[33.239091,126.439491], sagye_abalone:[33.24842,126.303144],
+  sanbang_choga:[33.240656,126.300204], sagyebada:[33.227874,126.303798],
+  sanbang_sikdang:[33.223461,126.254213]
 };
 
 /* 카카오 장소 ID (place.map.kakao.com/ID) */
@@ -459,7 +494,14 @@ const KID = {
   jocheon_noodle:177981921,haenyeochon:16525337,myeongjin:20031551,sukja:556924957,
   bomal_haewol:8615207,chunok:1444465544,pyeongdae_sea:26915450,matna:8970084,paldo:1057105002,
   cheonghaewon:1943641853,gyeongmine:21931852,boryong:10375136,seowoobong:25280784,
-  bijarim:7912085,sangumburi:21348535,sehwa_beach:7964223
+  bijarim:7912085,sangumburi:21348535,sehwa_beach:7964223,
+  cheonjiyeon:8100102,jeongbang:10717401,oedolgae:25035440,saeyeon:26875121,olle_market:7938166,
+  daepo:10793668,cheonjeyeon:8092604,yeomiji:8004227,jungmun_beach:8069764,soesokkak:7962003,
+  sanbangsan:8386141,yongmeori:10706886,sagye_beach:11055702,camellia:9461977,osulloc:11332661,
+  eongtto:8008273,sambo:11486940,negeori:9733194,cheonjitgol:12501703,ssangdungi:11600257,
+  gwanchon:8656455,oneunjeong:8453998,saekdal:17809788,sukseongdo:204534740,sudduri:1148098112,
+  deomjang:8258838,daepodongsan:9711307,sagye_abalone:2011590693,sanbang_choga:12974776,
+  sagyebada:10447497,sanbang_sikdang:10437289
 };
 
 /* 장소 메타데이터 — 이름/분류/지역/네이버 리뷰 키워드/메모 (네이버 조사 기반) */
@@ -506,35 +548,65 @@ const DB = {
   bijarim:{name:"비자림",cat:"명소",area:"구좌",kw:["피톤치드","숲그늘시원","평탄한흙길","유모차가능(A코스)"],note:"한여름 더위 피난 1순위 · A코스만 권장",conf:"high"},
   andol:{name:"안돌오름 비밀의숲",cat:"명소",area:"송당",kw:["편백나무숲","인생샷","비포장진입로","주차협소"],note:"비온 뒤 질척 · 어르신 비추천 · 입장 있음",conf:"high"},
   sangumburi:{name:"산굼부리",cat:"명소",area:"조천 교래",kw:["분화구","완만한오르막","전망좋음","그늘적음"],note:"에코랜드 근처 · 이른 시간 권장",conf:"high"},
-  sehwa_beach:{name:"세화해변",cat:"해변",area:"구좌 세화",kw:["한적함","물차가움","벨롱장","조용함"],note:"규모 작아 어르신 여유 · 벨롱장 개장일 확인",conf:"high"}
+  sehwa_beach:{name:"세화해변",cat:"해변",area:"구좌 세화",kw:["한적함","물차가움","벨롱장","조용함"],note:"규모 작아 어르신 여유 · 벨롱장 개장일 확인",conf:"high"},
+
+  /* ===== 서귀포 남부 맛집 ===== */
+  sambo:{name:"삼보식당",cat:"식당",area:"서귀포 시내",kw:["갈치조림","한치물회","고기국수","현지인가성비","혼밥가능"],note:"08~21시 · 매달 2·4째 수요일 휴무 · 올레시장·천지연 도보권",conf:"high"},
+  negeori:{name:"네거리식당",cat:"식당",area:"서귀포 시내",kw:["갈치조림","갈치국","시원한국물","노포","공영주차"],note:"07시 오픈 · 올레시장 1분 · 휴무 미확인",conf:"medium"},
+  cheonjitgol:{name:"천짓골식당",cat:"식당",area:"서귀포 시내",kw:["돔베고기","흑돼지수육","웨이팅","저녁만","몸국서비스"],note:"17:30~22시 저녁만 · 골목 주차불편 · 이른 오픈 권장 · 휴무 미확인",conf:"medium"},
+  ssangdungi:{name:"쌍둥이횟집",cat:"식당",area:"서귀포 시내",kw:["스끼다시푸짐","모둠회","물회","아이의자","단체가능"],note:"11~22시 · 넓은 매장 · 저녁·단체 예약권장 · 휴무 미확인",conf:"medium"},
+  gwanchon:{name:"관촌밀면",cat:"식당",area:"서귀포 시내",kw:["밀면","고기국수","가성비","회전빠름","공영주차"],note:"10:30~19시 · 일요일 휴무 · 어르신·아이 무난",conf:"high"},
+  oneunjeong:{name:"오는정김밥",cat:"식당",area:"서귀포 시내",kw:["예약제","포장전문","방송출연","매장취식불가"],note:"전날 전화예약 필수 · 일 휴무 · 13~14:30 브레이크 · 이동 간식용",conf:"high"},
+  saekdal:{name:"색달식당 중문본점",cat:"식당",area:"중문",kw:["통갈치조림","뼈없어편함","푸짐","가족외식","브레이크타임"],note:"10~21시 · 15~16시 브레이크 · 뼈 발라줘 아이·어르신 편함 · 휴무 미확인",conf:"medium"},
+  sukseongdo:{name:"숙성도 중문점",cat:"식당",area:"중문",kw:["숙성흑돼지","웨이팅1시간","캐치테이블예약","직원구이","주차넓음"],note:"12~22시 · 14:30~16 브레이크 · 원격예약 필수",conf:"medium"},
+  sudduri:{name:"중문수두리보말칼국수",cat:"식당",area:"중문",kw:["보말칼국수","재료소진마감","웨이팅","오전방문권장"],note:"08~17시 · 13시 후 조기마감 잦음 · 1·3째 화요일 휴무설",conf:"medium"},
+  deomjang:{name:"덤장 중문점",cat:"식당",area:"중문",kw:["한상차림","향토정식","연중무휴","무료주차","아침영업"],note:"08~21시 · 15:30~17 브레이크 · 취향 다른 가족·어르신에 이상적",conf:"high"},
+  daepodongsan:{name:"대포동산횟집",cat:"식당",area:"중문 대포",kw:["오션뷰","대포포구뷰","싱싱한회","전용주차","점심특선"],note:"10:30~22시 · 주상절리 동선 연계 · 휴무 미확인",conf:"medium"},
+  sagye_abalone:{name:"사계전복 산방산본점",cat:"식당",area:"안덕 사계",kw:["전복돌솥밥","넓은주차","오션뷰","아침영업","브레이크타임"],note:"08~20시 · 16~17 브레이크 · 매달 2째 수 휴무 · 산방산 동선",conf:"high"},
+  sanbang_choga:{name:"산방산초가집",cat:"식당",area:"안덕 사계",kw:["전복해물전골","은갈치구이","푸짐","전복죽","목요일휴무"],note:"08:30~20시 · 15:30~17 브레이크 · 목요일 휴무",conf:"high"},
+  sagyebada:{name:"사계바다",cat:"식당",area:"안덕 사계",kw:["오션뷰","형제섬뷰","뼈없는순살","주차편함","애견동반"],note:"영업시간 표기 이례적 — 방문 전 반드시 확인",conf:"low"},
+  sanbang_sikdang:{name:"산방식당",cat:"식당",area:"대정 모슬포",kw:["밀면","수육","주말웨이팅","현지인노포","점심장사"],note:"오후 17시경 마감 · 월요일 휴무설 · 산방산서 서쪽 모슬포",conf:"medium"},
+
+  /* ===== 서귀포 남부 관광지 ===== */
+  cheonjiyeon:{name:"천지연폭포",cat:"명소",area:"서귀포 시내",kw:["야경명소","평탄산책로","유모차가능","숲그늘","주차넓음"],note:"성인 2,000원 · 야간개장~22시 · 저녁 추천 · 어르신 무난",conf:"high"},
+  jeongbang:{name:"정방폭포",cat:"명소",area:"서귀포 시내",kw:["바다로떨어지는폭포","계단많음","절경","그늘적음"],note:"성인 2,000원 · 돌계단 경사 → 어르신 부담·유모차 불가",conf:"high"},
+  oedolgae:{name:"외돌개",cat:"명소",area:"서귀포 시내",kw:["올레7코스","숲길그늘","산책하기좋음","인생샷","바람시원"],note:"무료 · 전망대까지 평탄 → 어르신 무난 · 해안계단은 선택",conf:"high"},
+  saeyeon:{name:"새연교 · 서귀포항",cat:"명소",area:"서귀포 시내",kw:["야경","일몰명소","평탄산책","무료주차","금·토 불꽃분수"],note:"무료 · 평탄해 어르신·유모차 최적 · 숙소 도보권 · 저녁 추천",conf:"high"},
+  olle_market:{name:"서귀포 매일올레시장",cat:"명소",area:"서귀포 시내",kw:["먹거리천국","오메기떡","아케이드지붕","평탄","주차"],note:"지붕형이라 소나기·햇볕 피하기 좋음 · 성수기 붐빔",conf:"high"},
+  daepo:{name:"대포주상절리 (지삿개)",cat:"명소",area:"중문",kw:["주상절리절경","데크계단많음","그늘없음","주차유료"],note:"성인 2,000원 · 계단 위주 → 유모차 불가 · 한여름 땡볕(모자·물)",conf:"high"},
+  cheonjeyeon:{name:"천제연폭포",cat:"명소",area:"중문",kw:["3단폭포","선임교","계단많음","유모차불가","주차완비"],note:"일반 2,500원 · 계단길 → 어르신 부담 · 숲그늘 있음",conf:"high"},
+  yeomiji:{name:"여미지식물원",cat:"명소",area:"중문",kw:["실내온실","비올때좋음","전망대","유모차대여","사진명소"],note:"성인 12,000원 · 실내 온실 → 폭염·소나기 대피 최적",conf:"high"},
+  jungmun_beach:{name:"중문색달해수욕장",cat:"해변",area:"중문",kw:["서핑명소","물놀이","파도거침","계단내려감","주차"],note:"무료 · 파도 세 아이 구명조끼 · 백사장까지 계단 → 어르신 주의",conf:"high"},
+  soesokkak:{name:"쇠소깍",cat:"명소",area:"서귀포 하효",kw:["투명카약","에메랄드물빛","무료산책로","데크계단","주차무료"],note:"산책 무료 · 카약 2인 2만 · 주차~승선장 도보 10분",conf:"high"},
+  sanbangsan:{name:"산방산",cat:"명소",area:"안덕",kw:["돌계단오르막","마라도조망","경사있음","석굴사찰","그늘적음"],note:"산방굴사 1,000원 · 150m 오르막 → 어르신 부담 · 아래 조망만도 OK",conf:"high"},
+  yongmeori:{name:"용머리해안",cat:"해변",area:"안덕 사계",kw:["물때확인필수","통제잦음","계단경사","미끄러움","해안절경"],note:"성인 2,000원 · 만조·풍랑·우천 시 통제(064-794-2940) · 낙상주의",conf:"high"},
+  sagye_beach:{name:"사계해변 · 형제섬",cat:"해변",area:"안덕 사계",kw:["산방산뷰","형제섬조망","올레10코스","백사장산책","사진명소"],note:"무료 · 물놀이 아님(샤워실 없음) · 평탄 산책 · 일몰 명소",conf:"medium"},
+  camellia:{name:"카멜리아힐",cat:"명소",area:"안덕",kw:["여름수국","유모차가능","숲길그늘","주차무료","산책로김"],note:"성인 10,000원 · 산책로 김 → 쉼터서 나눠 쉬기 · 숲그늘 많음",conf:"high"},
+  osulloc:{name:"오설록 티뮤지엄",cat:"카페",area:"안덕 서광",kw:["무료입장","녹차밭","실내박물관·카페","주차무료","디저트"],note:"무료 · 실내 카페·박물관 → 폭염·소나기 대피 좋음 · 여름 웨이팅",conf:"high"},
+  eongtto:{name:"엉또폭포",cat:"명소",area:"서귀포 강정",kw:["비온뒤만","건천폭포","평소물없음","평탄산책로"],note:"무료 · 비 70mm+ 온 직후만 물줄기 → 평소 헛걸음 주의 · 강수 확인",conf:"medium"}
 };
 
 /* 일정 stop 이름 → 좌표/DB 키 매핑 (stop 데이터를 안 건드리기 위해) */
 const STOP_ID = {
   "제주국제공항 도착 · 렌터카":"airport", "제주국제공항 (출발)":"airport",
-  "함덕흑돼지우돈향":"woodonhyang", "국제리더스클럽 (해양체험)":"leaders",
-  "고집돌우럭 함덕점":"gozibdol", "함덕해수욕장":"hamdeok_beach",
-  "김녕미로공원":"kimnyeong_maze", "성산일출봉":"sunrise_peak",
-  "갈치조림맛집 (성산 고성리)":"matna", "섭지코지":"seopjikoji",
-  "함덕 숙소 복귀":"home", "에코랜드 테마파크":"ecoland", "아쿠아플라넷 제주":"aqua"
+  "삼보식당":"sambo", "새연교 · 서귀포항 야경":"saeyeon", "서귀포 매일올레시장":"olle_market",
+  "국제리더스클럽 (해양체험)":"leaders", "고집돌우럭 함덕점":"gozibdol",
+  "함덕해수욕장":"hamdeok_beach", "비자림":"bijarim", "에코랜드 테마파크":"ecoland",
+  "외돌개":"oedolgae", "대포주상절리 (지삿개)":"daepo", "여미지식물원":"yeomiji",
+  "색달식당 중문본점":"saekdal", "중문색달해수욕장":"jungmun_beach",
+  "오설록 티뮤지엄":"osulloc", "카멜리아힐":"camellia",
+  "서귀포 숙소 복귀":"home"
 };
 
-/* extras(더 가볼 곳) 카드 → DB 키 매핑 */
-const XID = {
-  "오늘도화창":"oneuldo","토키문 (Tokimoon)":"tokimoon","W728 카페 & 하우스":"w728",
-  "함덕흑돼지우돈향":"woodonhyang","고집돌우럭 함덕점":"gozibdol","갈치조림맛집":"matna",
-  "김녕성세기해변":"seongsegi","안돌오름 비밀의숲":"andol","월정리해변":"woljeong_beach","광치기해변":"gwangchigi",
-  "우진해장국":null,"맛나식당":"matna","명진전복":"myeongjin","김녕 해맞이쉼터":null,
-  "델문도":null,"카페 공작소":null,"비자림":"bijarim","산굼부리":"sangumburi",
-  "서우봉 둘레길":"seowoobong","세화해변":"sehwa_beach",
-  "해장살롱 함덕본점":"haejang","수선화식당 함덕점":"suseonhwa","제주흑돼지 함덕그때그집":"geuttae",
-  "숙자네숟가락젓가락 세화본점":"sukja","보말칼국수 해월정":"bomal_haewol","이춘옥원조고등어쌈밥 월정점":"chunok",
-  "성산 팔도식당갈치조림 섭지코지본점":"paldo","제주로운청해원 성산일출봉점":"cheonghaewon","보룡제과":"boryong"
-};
+/* DB 이름 → 키 자동 매핑 (extras 카드 이름이 DB 이름과 같으면 자동 연결) */
+const NAME2ID = {};
+Object.keys(DB).forEach(id=>{ NAME2ID[DB[id].name]=id; });
+/* 별칭(이름이 조금 다른 경우만) */
+const XID = { "새연교 · 서귀포항 야경":"saeyeon", "대포주상절리":"daepo" };
 
 /* ---- 좌표/키워드/길찾기 헬퍼 ---- */
 function coordOf(idOrName){
-  const id = COORDS[idOrName] ? idOrName : (STOP_ID[idOrName] || XID[idOrName]);
+  const id = COORDS[idOrName] ? idOrName : (STOP_ID[idOrName] || XID[idOrName] || NAME2ID[idOrName]);
   return id && COORDS[id] ? {id, ll:COORDS[id]} : null;
 }
 function kwHtml(kw){
@@ -572,101 +644,112 @@ function mapUrl(p){
   return `https://www.google.com/maps/search/?api=1&query=${q}`;
 }
 
-/* 숙소: 표시는 "함덕 숙소", 길찾기는 함덕해변 좌표로 (정확한 숙소 주소가 정해지면 s 값만 바꾸세요) */
-const HOME = {name:"함덕 숙소", s:"33.5432,126.6697"};
+/* 숙소: 서귀포 남성로128번길 24 (서귀포 시내). 표시는 "서귀포 숙소" */
+const HOME = {name:"서귀포 숙소", s:"33.240586,126.556281"};
 
 const PLANS = {
   A:{
-    lead:"바다·오름·해안 산책 중심의 <b>제주다운 풍경</b> 루트. 이동은 조금 있지만 뷰가 최고예요.",
+    lead:"서귀포 남부의 <b>바다·폭포·오름</b> 중심 루트. 숙소에서 가까운 순으로 묶어 이동을 줄였어요. (둘째 날만 예약 체험 때문에 북부로 나들이)",
     days:[
-      {n:"DAY 1",iso:"2026-07-24",date:"7/24 (목) · 도착",title:"제주 입성 & 함덕 노을",drive:"약 30분 · 25km",stops:[
-        {t:"16:40",cat:"이동",name:"제주국제공항 도착 · 렌터카",s:"제주국제공항",d:"짐 찾고 렌터카 받으면 5시 넘어요. 함덕 숙소까지 차로 25분.",ll:"33.5066,126.4928"},
-        {t:"18:30",cat:"식당",name:"함덕흑돼지우돈향",d:"함덕해변 오션뷰 흑돼지집. 저녁 먹고 해변 야경 산책하면 첫날로 딱이에요.",pid:"ChIJbZmjH8kfDTUR8T6yKnbJqe8",leg:{m:25,km:22}}
+      {n:"DAY 1",iso:"2026-07-24",date:"7/24 (목) · 도착",title:"제주 입성 & 서귀포 야경",area:"서귀포 시내",drive:"약 55분 · 42km",stops:[
+        {t:"16:40",cat:"이동",name:"제주국제공항 도착 · 렌터카",s:"제주국제공항",d:"짐 찾고 렌터카 받으면 5시 넘어요. 서귀포 숙소까지 차로 약 50분(평화로·1100도로).",ll:"33.5066,126.4928"},
+        {t:"18:00",cat:"식당",name:"삼보식당",d:"서귀포 시내 노포. 갈치조림·한치물회·고기국수로 첫 저녁을 제주답게. 숙소·올레시장 도보권.",leg:{m:50,km:40}},
+        {t:"19:30",cat:"명소",name:"새연교 · 서귀포항 야경",d:"조명 켜진 다리와 새섬을 평탄하게 한 바퀴. 장모님·아이 모두 편하고 숙소서 5분. (금·토는 불꽃분수쇼)",leg:{m:6,km:2}}
       ]},
-      {n:"DAY 2",iso:"2026-07-25",date:"7/25 (금) · 해양체험 + 북동부",title:"바다 체험과 미로",from:HOME,drive:"약 45분 · 30km",stops:[
-        {t:"10:30",cat:"체험",name:"국제리더스클럽 (해양체험)",s:"국제리더스클럽",d:"예약하신 곳! 물고기 밥주기·반잠수함 등 아이·어른 모두 편해요.",pid:"ChIJdSClZQQfDTURLt3-3V0DZlI",leg:{m:10,km:5}},
-        {t:"12:30",cat:"식당",name:"고집돌우럭 함덕점",d:"오션뷰 우럭조림. 낮 영업 2시 50분 마감이니 조금 서두르세요.",pid:"ChIJ00PR6XYfDTURlkix8j-OnkQ",leg:{m:10,km:5}},
-        {t:"14:00",cat:"해변",name:"함덕해수욕장",d:"물이 얕고 잔잔해 아이 물놀이 안전. 수영복·수건 챙기기!",pid:"ChIJMbJyapkeDTURkIp6l1JoLfY",leg:{m:3,km:0.4,walk:true}},
-        {t:"15:30",cat:"명소",name:"김녕미로공원",d:"함덕에서 15분. 미로·게임·고양이로 아이들 신나요. 65세 이상 할인.",pid:"ChIJ85Mt99EZDTURwVDY56YZxzs",leg:{m:15,km:12}}
+      {n:"DAY 2",iso:"2026-07-25",date:"7/25 (금) · 북부 나들이",title:"해양체험 & 동부 바다",area:"북부(조천·함덕)",drive:"약 2시간 20분 · 120km",from:HOME,stops:[
+        {t:"08:20",cat:"이동",name:"서귀포 → 북부 출발",s:"33.240586,126.556281",d:"예약 체험이 북쪽이라 오늘은 하루 북부 나들이! 8시 조금 넘어 출발하면 여유로워요.",ll:"33.240586,126.556281"},
+        {t:"10:30",cat:"체험",name:"국제리더스클럽 (해양체험)",d:"예약하신 곳! 물고기 밥주기·반잠수함 등 아이·어른 모두 편해요. (서귀포서 약 1시간)",leg:{m:60,km:42}},
+        {t:"12:30",cat:"식당",name:"고집돌우럭 함덕점",d:"오션뷰 우럭조림. 낮 영업 2시 50분 마감이니 조금 서두르세요.",leg:{m:10,km:6}},
+        {t:"14:00",cat:"해변",name:"함덕해수욕장",d:"물이 얕고 잔잔해 아이 물놀이 안전. 수영복·수건 챙기기!",leg:{m:3,km:0.4,walk:true}},
+        {t:"15:30",cat:"명소",name:"비자림",d:"천년 숲길이 시원해 한여름 더위 피난 1순위. 평탄한 A코스면 장모님도 무난.",leg:{m:30,km:25}},
+        {t:"17:00",cat:"이동",name:"서귀포 숙소 복귀",d:"돌아오는 길이 머니 저녁은 숙소 근처에서 가볍게. 오늘 하루 수고했어요!",leg:{m:75,km:55}}
       ]},
-      {n:"DAY 3",iso:"2026-07-26",date:"7/26 (토) · 동부 자연",title:"성산과 바다 절벽",from:HOME,drive:"약 1시간 50분 · 100km",stops:[
-        {t:"09:30",cat:"명소",name:"성산일출봉",d:"아침 일찍 시원할 때! 아이·부모는 정상 계단, 장모님은 아래 산책로·카페에서 쉬셔도 좋아요.",pid:"ChIJn3jj9rkUDTURS7YjOgUyUVU",leg:{m:45,km:40}},
-        {t:"12:30",cat:"식당",name:"갈치조림맛집 (성산 고성리)",s:"제주 성산 고성리 갈치조림맛집",d:"갈치조림에 갈치구이까지 나오는 가성비 집. 아이·어르신과 먹기 좋아요.",pid:"ChIJX7T3RYoTDTURtteBsYYlDTI",leg:{m:8,km:4}},
-        {t:"14:00",cat:"명소",name:"섭지코지",d:"바다 끼고 평평한 산책길. 유모차·어르신 모두 편해요. 근처 광치기해변도 예뻐요.",pid:"ChIJ-5DfghYTDTUR8RaKuI4FID4",leg:{m:12,km:8}},
-        {t:"16:30",cat:"이동",name:"함덕 숙소 복귀",s:"함덕해수욕장",d:"돌아오는 길에 김녕·월정리 카페를 한 곳 들르면 딱 좋아요.",ll:"33.5432,126.6697",leg:{m:50,km:45}}
+      {n:"DAY 3",iso:"2026-07-26",date:"7/26 (토) · 남부 해안·폭포",title:"주상절리와 중문 바다",area:"서귀포·중문",drive:"약 1시간 30분 · 60km",from:HOME,stops:[
+        {t:"09:00",cat:"명소",name:"외돌개",d:"숙소서 5분. 그늘진 숲길이라 아침 산책으로 딱. 전망대까지는 평탄해 장모님도 편해요.",leg:{m:8,km:3}},
+        {t:"10:30",cat:"명소",name:"대포주상절리 (지삿개)",d:"육각 기둥 절벽 절경. 계단이 있어 어르신은 천천히, 한여름엔 모자·물 필수.",leg:{m:20,km:16}},
+        {t:"12:00",cat:"식당",name:"색달식당 중문본점",d:"뼈 없는 통갈치조림이라 아이·어르신 먹기 편해요. 3시 브레이크 전에 들어가기.",leg:{m:8,km:4}},
+        {t:"13:30",cat:"해변",name:"중문색달해수욕장",d:"넓은 백사장. 파도가 있는 편이라 아이는 구명조끼 권장. 백사장까지 계단 있어요.",leg:{m:8,km:3}},
+        {t:"15:30",cat:"명소",name:"카멜리아힐",d:"여름엔 수국이 예쁜 수목원. 숲 그늘이 많고 쉼터·카페가 있어 나눠 쉬며 걷기 좋아요.",leg:{m:30,km:22}},
+        {t:"17:30",cat:"이동",name:"서귀포 숙소 복귀",d:"저녁은 서귀포 시내(올레시장)나 중문에서. 아래 '이 근처 추천'도 참고하세요.",leg:{m:35,km:28}}
       ]},
-      {n:"DAY 4",iso:"2026-07-27",date:"7/27 (일) · 출발",title:"공항으로",from:HOME,drive:"약 30분 · 25km",stops:[
-        {t:"07:45",cat:"이동",name:"제주국제공항 (출발)",s:"제주국제공항",d:"9:30 비행기. 7시엔 숙소를 나서고 렌터카 반납 시간까지 고려해 서두르세요.",ll:"33.5066,126.4928",leg:{m:25,km:22}}
+      {n:"DAY 4",iso:"2026-07-27",date:"7/27 (일) · 출발",title:"공항으로",area:"출발",drive:"약 55분 · 42km",from:HOME,stops:[
+        {t:"07:00",cat:"이동",name:"제주국제공항 (출발)",s:"제주국제공항",d:"⚠️ 9:30 비행기 + 서귀포서 공항 약 1시간 + 렌터카 반납! 늦어도 7시엔 숙소를 나서세요.",ll:"33.5066,126.4928",leg:{m:55,km:42}}
       ]}
     ]
   },
   B:{
-    lead:"걷기 적고 실내 많은 <b>더위·비 대비</b> 루트. 어르신은 덜 지치고 아이 체험 만족도가 높아요.",
+    lead:"비 예보·폭염일 때의 <b>실내·숲 그늘</b> 루트. 걷기와 땡볕을 줄여 어르신·아이가 덜 지쳐요. (둘째 날은 예약 체험으로 북부 나들이)",
     days:[
-      {n:"DAY 1",iso:"2026-07-24",date:"7/24 (목) · 도착",title:"제주 입성 & 함덕 노을",drive:"약 30분 · 25km",stops:[
-        {t:"16:40",cat:"이동",name:"제주국제공항 도착 · 렌터카",s:"제주국제공항",d:"렌터카 받고 함덕 숙소로 25분. 가는 길에 마트 장보면 편해요.",ll:"33.5066,126.4928"},
-        {t:"18:30",cat:"식당",name:"함덕흑돼지우돈향",d:"함덕해변 오션뷰 흑돼지집으로 첫날 축하!",pid:"ChIJbZmjH8kfDTUR8T6yKnbJqe8",leg:{m:25,km:22}}
+      {n:"DAY 1",iso:"2026-07-24",date:"7/24 (목) · 도착",title:"제주 입성 & 올레시장",area:"서귀포 시내",drive:"약 55분 · 42km",stops:[
+        {t:"16:40",cat:"이동",name:"제주국제공항 도착 · 렌터카",s:"제주국제공항",d:"렌터카 받고 서귀포로 약 50분. 가는 길 마트 장보면 편해요.",ll:"33.5066,126.4928"},
+        {t:"18:00",cat:"식당",name:"삼보식당",d:"서귀포 시내 노포에서 갈치조림·물회로 첫 저녁. 비 와도 시내라 이동 짧아요.",leg:{m:50,km:40}},
+        {t:"19:30",cat:"명소",name:"서귀포 매일올레시장",d:"지붕 덮인 아케이드라 비·더위 걱정 없이 오메기떡·먹거리 구경. 숙소서 5분.",leg:{m:6,km:2}}
       ]},
-      {n:"DAY 2",iso:"2026-07-25",date:"7/25 (금) · 해양체험 + 에코랜드",title:"바다 체험과 숲속 기차",from:HOME,drive:"약 1시간 · 45km",stops:[
-        {t:"10:30",cat:"체험",name:"국제리더스클럽 (해양체험)",s:"국제리더스클럽",d:"예약하신 해양체험!",pid:"ChIJdSClZQQfDTURLt3-3V0DZlI",leg:{m:10,km:5}},
-        {t:"12:30",cat:"식당",name:"고집돌우럭 함덕점",d:"오션뷰 우럭조림. 낮 영업 2시 50분 마감 주의.",pid:"ChIJ00PR6XYfDTURlkix8j-OnkQ",leg:{m:10,km:5}},
-        {t:"14:00",cat:"해변",name:"함덕해수욕장",d:"잠깐 물놀이하고 오후엔 에코랜드로.",pid:"ChIJMbJyapkeDTURkIp6l1JoLfY",leg:{m:3,km:0.4,walk:true}},
-        {t:"15:30",cat:"명소",name:"에코랜드 테마파크",d:"숲속을 꼬마 기차로 도는 곳! 걷기가 거의 없어 장모님께 제일 편하고 아이들은 기차를 좋아해요. 7시 마감.",pid:"ChIJ8UZkwTsDDTURZ8J20iKdqI0",leg:{m:25,km:18}}
+      {n:"DAY 2",iso:"2026-07-25",date:"7/25 (금) · 북부 나들이",title:"해양체험 & 숲속 기차",area:"북부(조천·함덕)",drive:"약 2시간 10분 · 110km",from:HOME,stops:[
+        {t:"08:20",cat:"이동",name:"서귀포 → 북부 출발",s:"33.240586,126.556281",d:"예약 체험이 북쪽이라 하루 북부 나들이. 비 예보면 우비·여벌옷 챙기기.",ll:"33.240586,126.556281"},
+        {t:"10:30",cat:"체험",name:"국제리더스클럽 (해양체험)",d:"예약하신 해양체험! (서귀포서 약 1시간)",leg:{m:60,km:42}},
+        {t:"12:30",cat:"식당",name:"고집돌우럭 함덕점",d:"오션뷰 우럭조림. 낮 2시 50분 마감 주의.",leg:{m:10,km:6}},
+        {t:"14:00",cat:"명소",name:"에코랜드 테마파크",d:"곶자왈 숲을 꼬마 기차로! 걷기가 거의 없어 장모님께 제일 편하고 비와도 좋아요. 7시 마감.",leg:{m:25,km:20}},
+        {t:"16:30",cat:"이동",name:"서귀포 숙소 복귀",d:"돌아오는 길이 머니 저녁은 숙소 근처에서 가볍게.",leg:{m:55,km:42}}
       ]},
-      {n:"DAY 3",iso:"2026-07-26",date:"7/26 (토) · 아쿠아플라넷 + 성산",title:"실내 아쿠아리움",from:HOME,drive:"약 1시간 50분 · 105km",stops:[
-        {t:"10:00",cat:"명소",name:"아쿠아플라넷 제주",d:"대형 실내 아쿠아리움. 비·더위 걱정 없이 아이들이 제일 좋아해요. 공연 시간 맞춰 가면 좋아요.",pid:"ChIJw6cLOWwTDTUR6cEPiE2sSKQ",leg:{m:50,km:45}},
-        {t:"13:00",cat:"식당",name:"갈치조림맛집 (성산 고성리)",s:"제주 성산 고성리 갈치조림맛집",d:"근처 가성비 갈치조림집에서 점심.",pid:"ChIJX7T3RYoTDTURtteBsYYlDTI",leg:{m:10,km:6}},
-        {t:"14:30",cat:"명소",name:"섭지코지",d:"아쿠아플라넷 바로 옆! 점심 후 가벼운 바다 산책. 더우면 짧게만.",pid:"ChIJ-5DfghYTDTUR8RaKuI4FID4",leg:{m:10,km:7}},
-        {t:"16:30",cat:"이동",name:"함덕 숙소 복귀",s:"함덕해수욕장",d:"비가 오면 김녕미로공원 대신 실내 카페에서 쉬어가도 좋아요.",ll:"33.5432,126.6697",leg:{m:50,km:45}}
+      {n:"DAY 3",iso:"2026-07-26",date:"7/26 (토) · 실내·숲 그늘",title:"식물원과 티뮤지엄",area:"중문·안덕",drive:"약 1시간 40분 · 70km",from:HOME,stops:[
+        {t:"09:30",cat:"명소",name:"여미지식물원",d:"6개 테마 온실이 전부 실내라 소나기·폭염에 최적. 평탄해 유모차·어르신도 편해요.",leg:{m:22,km:18}},
+        {t:"12:00",cat:"식당",name:"색달식당 중문본점",d:"뼈 없는 통갈치조림. 3시 브레이크 전에 들어가기.",leg:{m:8,km:4}},
+        {t:"13:30",cat:"카페",name:"오설록 티뮤지엄",d:"녹차밭 옆 실내 박물관·카페. 비·더위 대피 좋고 디저트가 아이들에게 인기.",leg:{m:20,km:16}},
+        {t:"15:30",cat:"명소",name:"카멜리아힐",d:"숲 그늘 많은 수목원. 흐린 날 산책으로 좋고 쉼터가 많아요.",leg:{m:15,km:12}},
+        {t:"17:30",cat:"이동",name:"서귀포 숙소 복귀",d:"저녁은 서귀포 시내에서. 아래 '이 근처 추천'도 참고하세요.",leg:{m:30,km:25}}
       ]},
-      {n:"DAY 4",iso:"2026-07-27",date:"7/27 (일) · 출발",title:"공항으로",from:HOME,drive:"약 30분 · 25km",stops:[
-        {t:"07:45",cat:"이동",name:"제주국제공항 (출발)",s:"제주국제공항",d:"9:30 비행기. 7시엔 숙소 출발.",ll:"33.5066,126.4928",leg:{m:25,km:22}}
+      {n:"DAY 4",iso:"2026-07-27",date:"7/27 (일) · 출발",title:"공항으로",area:"출발",drive:"약 55분 · 42km",from:HOME,stops:[
+        {t:"07:00",cat:"이동",name:"제주국제공항 (출발)",s:"제주국제공항",d:"⚠️ 9:30 비행기 + 서귀포서 공항 약 1시간 + 렌터카 반납! 늦어도 7시엔 숙소를 나서세요.",ll:"33.5066,126.4928",leg:{m:55,km:42}}
       ]}
     ]
   }
 };
 
+/* 지역별 '이 근처 추천 스팟' 풀 (일정에 없는 여분 맛집·명소·카페) */
+const RECO = {
+  "서귀포 시내":["cheonjiyeon","jeongbang","oedolgae","olle_market","negeori","gwanchon","ssangdungi","cheonjitgol","oneunjeong","soesokkak","eongtto"],
+  "서귀포·중문":["cheonjeyeon","yeomiji","daepodongsan","sudduri","deomjang","sukseongdo","osulloc","jeongbang","soesokkak"],
+  "중문·안덕":["daepo","jungmun_beach","cheonjeyeon","sanbangsan","yongmeori","sagye_beach","sagye_abalone","sanbang_choga","deomjang","daepodongsan"],
+  "북부(조천·함덕)":["haejang","suseonhwa","geuttae","kimnyeong_maze","seongsegi","sangumburi","haenyeochon"],
+  "출발":[]
+};
+
 const EXTRAS = [
-  {cat:"카페",name:"오늘도화창",area:"월정리",d:"별점 4.9의 아늑한 바닷가 카페. 당근케이크와 한라봉차가 시그니처, 사장님이 친절해요.",pid:"ChIJUzmaru0XDTURuCP2kghmnL0"},
-  {cat:"카페",name:"토키문 (Tokimoon)",area:"월정리",d:"토끼 테마 루프탑 카페. 흑임자 라떼·말차 크림라떼가 유명하고 옥상에서 바다가 보여요.",pid:"ChIJQVrvUfMXDTURK_peEsid5wc"},
-  {cat:"카페",name:"W728 카페 & 하우스",area:"월정리",d:"루프탑 빈백에서 오션뷰를 즐기는 곳. 한라봉 스무디가 인기예요.",pid:"ChIJ2W8IUbUXDTURixEJOn1Fs_E"},
-  {cat:"맛집",name:"함덕흑돼지우돈향",area:"함덕",d:"함덕해변이 한눈에 보이는 오션뷰 흑돼지집. 고등어쌈밥·전복밥도 좋아요.",pid:"ChIJbZmjH8kfDTUR8T6yKnbJqe8"},
-  {cat:"맛집",name:"고집돌우럭 함덕점",area:"함덕",d:"제주 대표 우럭조림·전복 세트. 바다 보며 먹는 한상. 낮 2:50 마감 주의.",pid:"ChIJ00PR6XYfDTURlkix8j-OnkQ"},
-  {cat:"맛집",name:"갈치조림맛집",area:"성산 고성리",d:"갈치조림에 갈치구이까지 나오는 가성비 집. 아이·부모님과 먹기 좋아요.",pid:"ChIJX7T3RYoTDTURtteBsYYlDTI"},
-  {cat:"사진명소",name:"김녕성세기해변",area:"김녕",d:"하얀 모래 + 풍력발전기 + 에메랄드빛 바다. '몰디브 같다'는 인생샷 명소예요.",pid:"ChIJnWoxZkcYDTURJT2wzlzI5eM"},
-  {cat:"사진명소",name:"안돌오름 비밀의숲",area:"송당",d:"쭉쭉 뻗은 편백나무 숲. 웨딩·가족 사진 성지로 유명해요. (입장료 있음, 진입로 비포장)",pid:"ChIJGQm5FWgbDTURrK0Um9tLBOA"},
-  {cat:"사진명소",name:"월정리해변",area:"월정리",d:"민트빛 바다와 예쁜 카페거리. 아이는 바다에서 놀고 어른은 카페에서 쉬기 좋아요.",pid:"ChIJxR5oOuwXDTUR7OVyfNv5QT4"},
-  {cat:"사진명소",name:"광치기해변",area:"성산",d:"썰물 때 드러나는 이끼 바위와 성산일출봉 배경이 한 컷에! 섭지코지 근처예요.",ll:"33.4499,126.9256"},
+  /* ===== 서귀포 시내 (숙소 근처) ===== */
+  {cat:"맛집",name:"삼보식당",area:"서귀포 시내",d:"갈치조림·한치물회·고기국수까지 되는 시내 노포. 메뉴가 다양해 취향 다른 가족·어르신에 무난.",d2:"숙소·올레시장 도보권"},
+  {cat:"맛집",name:"네거리식당",area:"서귀포 시내",d:"안 비린 갈치조림·갈치국의 노포. 아침 7시 오픈에 올레시장 1분, 공영주차 인접.",d2:"올레시장 1분"},
+  {cat:"맛집",name:"쌍둥이횟집",area:"서귀포 시내",d:"스끼다시가 푸짐한 모둠회·물회. 1·2층 넓고 아이의자·주차 있어 가족·단체에 좋아요.",d2:"가족·단체"},
+  {cat:"맛집",name:"관촌밀면",area:"서귀포 시내",d:"밀면·고기국수 가성비집. 자극 없어 어르신·아이 무난하고 회전이 빨라요. 일요일 휴무.",d2:"가볍게 점심"},
+  {cat:"맛집",name:"오는정김밥",area:"서귀포 시내",d:"방송 탄 예약제 포장 김밥. 전날 전화예약 필수, 매장 취식 불가. 이동 중 아이 간식용.",d2:"전날 예약 필수"},
+  {cat:"사진명소",name:"천지연폭포",area:"서귀포 시내",d:"평탄한 데크 산책로에 숲 그늘. 밤 10시까지 야간개장이라 더운 낮 대신 저녁 산책 추천.",d2:"저녁·어르신 무난"},
+  {cat:"사진명소",name:"외돌개",area:"서귀포 시내",d:"올레 7코스 숲길. 그늘 좋고 바람 시원해 아침 산책으로 딱. 전망대까지 평탄.",d2:"숙소 5분"},
+  {cat:"사진명소",name:"정방폭포",area:"서귀포 시내",d:"바다로 바로 떨어지는 폭포. 절경이지만 내려가는 돌계단이 있어 어르신은 천천히.",d2:"계단 주의"},
+  {cat:"사진명소",name:"새연교 · 서귀포항",area:"서귀포 시내",d:"평탄한 다리·새섬 산책. 조명 켜진 저녁이 예쁘고 금·토엔 불꽃분수쇼. 숙소 도보권.",d2:"저녁 야경"},
+  {cat:"사진명소",name:"쇠소깍",area:"서귀포 하효",d:"에메랄드빛 물에서 투명카약·테우 체험. 데크 산책도 좋아요. 서귀포 동쪽 15분.",d2:"카약 체험"},
 
-  /* --- 추가 맛집 --- */
-  {cat:"맛집",name:"우진해장국",area:"제주시",d:"고사리육개장으로 전국구인 집. 공항에서 15분이라 첫날 도착·마지막 날 아침에 좋아요. 웨이팅 각오.",d2:"아이도 잘 먹는 순한 맛"},
-  {cat:"맛집",name:"맛나식당",area:"성산",d:"성산 갈치조림·고등어조림의 대표 맛집. 성산일출봉 일정과 붙이기 좋아요. 브레이크타임 확인 필수.",d2:"성산 코스와 세트"},
-  {cat:"맛집",name:"명진전복",area:"구좌 평대",d:"전복돌솥밥 명가. 어르신 입맛에 특히 좋아요. 대기 길 수 있으니 11시 전 도착 추천.",d2:"함덕에서 25분"},
-  {cat:"맛집",name:"김녕 해맞이쉼터",area:"김녕",d:"김녕미로공원 근처 해물칼국수·보말칼국수. 미로공원 다녀와 늦은 점심으로 딱이에요.",d2:"미로공원 5분"},
+  /* ===== 중문 ===== */
+  {cat:"맛집",name:"색달식당 중문본점",area:"중문",d:"뼈 없는 통갈치조림이라 아이·어르신 먹기 편해요. 3시 브레이크 전에 들어가기.",d2:"뼈 없어 편함"},
+  {cat:"맛집",name:"덤장 중문점",area:"중문",d:"갈치조림·고등어구이·돔베고기가 한상에. 연중무휴·무료주차라 가족·어르신에 이상적.",d2:"향토 한상"},
+  {cat:"맛집",name:"대포동산횟집",area:"중문 대포",d:"대포포구 오션뷰 회·물회. 주상절리 바로 옆이라 동선 연계가 좋아요.",d2:"주상절리 옆"},
+  {cat:"사진명소",name:"대포주상절리 (지삿개)",area:"중문",d:"육각 기둥 절벽 절경. 데크 계단 위주라 유모차 불가, 그늘 없어 모자·물 챙기기.",d2:"땡볕 주의"},
+  {cat:"사진명소",name:"여미지식물원",area:"중문",d:"6개 테마 온실이 전부 실내. 소나기·폭염 대피 최적이고 평탄해 유모차·어르신 편함.",d2:"비·더위 대피"},
+  {cat:"사진명소",name:"중문색달해수욕장",area:"중문",d:"넓은 백사장의 서핑 명소. 파도가 있어 아이는 구명조끼, 백사장까지 계단 있어요.",d2:"물놀이"},
 
-  /* --- 추가 카페 --- */
-  {cat:"카페",name:"델문도",area:"함덕",d:"함덕해변 바로 앞 대형 로스터리 카페. 숙소에서 걸어갈 수 있고 밤늦게까지 열어 야식 커피로 좋아요.",d2:"숙소 도보권"},
-  {cat:"카페",name:"카페 공작소",area:"조천",d:"조용한 로컬 감성 카페. 이동 중 어르신 쉬어가기 좋은 자리 배치예요.",d2:"이동 중 휴식"},
+  /* ===== 안덕·산방산 (서쪽) ===== */
+  {cat:"맛집",name:"사계전복 산방산본점",area:"안덕 사계",d:"전복돌솥밥·전복구이. 주차 넓고 아침 영업이라 산방산 동선과 붙이기 좋아요.",d2:"산방산 동선"},
+  {cat:"맛집",name:"산방산초가집",area:"안덕 사계",d:"전복해물전골+은갈치구이가 푸짐. 전복죽·구이도 있어 어르신·아이 무난. 목요일 휴무.",d2:"목요일 휴무"},
+  {cat:"카페",name:"오설록 티뮤지엄",area:"안덕 서광",d:"녹차밭 옆 실내 박물관·카페. 무료 입장에 폭염·소나기 대피 좋고 디저트가 아이들에 인기.",d2:"실내·무료"},
+  {cat:"사진명소",name:"산방산",area:"안덕",d:"산방굴사까지 정비된 돌계단 오르막(150m). 어르신은 아래에서 조망만 해도 좋아요.",d2:"오르막 주의"},
+  {cat:"사진명소",name:"용머리해안",area:"안덕 사계",d:"용이 머리를 든 듯한 해안 절경. 만조·풍랑·우천 시 통제되니 방문 전 전화확인 필수.",d2:"물때 확인 필수"},
+  {cat:"사진명소",name:"사계해변 · 형제섬",area:"안덕 사계",d:"산방산과 형제섬을 배경으로 한 인생샷 해변. 평탄한 백사장 산책·일몰 명소.",d2:"사진 명소"},
+  {cat:"사진명소",name:"카멜리아힐",area:"안덕",d:"여름 수국이 예쁜 수목원. 숲 그늘 많고 쉼터·카페가 있어 나눠 쉬며 걷기 좋아요.",d2:"여름 수국"},
 
-  /* --- 추가 둘러볼 곳 --- */
-  {cat:"사진명소",name:"비자림",area:"구좌 평대",d:"천년 비자나무 숲길. 바닥이 평탄해 유모차·어르신도 편하고, 한여름에도 시원해요. 더운 날 1순위 대안.",d2:"더위 피난처"},
-  {cat:"사진명소",name:"산굼부리",area:"조천 교래",d:"분화구 위 평탄한 산책로. 함덕에서 30분이고 뷰가 시원해요. 에코랜드와 같은 방향.",d2:"에코랜드 근처"},
-  {cat:"사진명소",name:"서우봉 둘레길",area:"함덕",d:"함덕해변 옆 낮은 오름. 20~30분이면 해변 전경 인생샷. 아침·해질녘이 시원하고 예뻐요.",d2:"숙소 도보권"},
-  {cat:"사진명소",name:"세화해변",area:"구좌 세화",d:"한적하고 물빛 고운 해변. 5일장(5·10일)이 서면 구경거리도 많아요.",d2:"월정리에서 10분"},
-
-  /* === 동선별 네이버 맛집 (조사 결과) === */
-  // 함덕·조천 (숙소 근처)
-  {cat:"맛집",name:"해장살롱 함덕본점",area:"함덕",d:"차돌 소고기 해장국. 넓고 인테리어 좋고 유아의자·단체 OK라 아이+어르신에 가장 안전한 아침집.",d2:"숙소 도보권"},
-  {cat:"맛집",name:"수선화식당 함덕점",area:"함덕",d:"보말파스타 등 양식. 초등생에 무난하면서 제주색. 오션뷰.",d2:"양식 대안"},
-  {cat:"맛집",name:"제주흑돼지 함덕그때그집",area:"함덕",d:"흑돼지 반반세트 + 김치찌개·볶음밥. 고기 못 먹는 아이도 해결. 콜키지 무료.",d2:"수요일 휴무"},
-  // 구좌 (김녕·월정·세화 방면)
-  {cat:"맛집",name:"숙자네숟가락젓가락 세화본점",area:"구좌 세화",d:"통갈치구이+갈치조림 한상. 구좌권 리뷰 1위, 어르신 동반 후기 최다.",d2:"어르신 강추"},
-  {cat:"맛집",name:"보말칼국수 해월정",area:"구좌 종달",d:"아침 8시 오픈 보말칼국수. 함덕→성산 이동 중 아침식사 최적, 넓고 자극 없음.",d2:"아침·이동 길목"},
-  {cat:"맛집",name:"이춘옥원조고등어쌈밥 월정점",area:"구좌 월정",d:"고등어묵은지찜. 유아의자·발렛·왕돈까스까지 있어 아이+어르신 인프라 최상.",d2:"가족 인프라 최상"},
-  // 성산 (일출봉·섭지코지 방면)
-  {cat:"맛집",name:"성산 팔도식당갈치조림 섭지코지본점",area:"성산 섭지코지",d:"갈치조림 주문 시 통갈치구이 서비스. 아쿠아플라넷 3분·섭지코지 5분으로 동선 최근접.",d2:"아쿠아·섭지 최근접"},
-  {cat:"맛집",name:"제주로운청해원 성산일출봉점",area:"성산 신양",d:"1인 정식세트라 각자 메뉴 선택 가능. 유아의자·예약·주차 완비, 5인+어르신에 무난.",d2:"예약 추천"},
-  {cat:"맛집",name:"보룡제과",area:"성산 고성",d:"마늘바게트로 유명한 빵집. 맛나식당 바로 앞이라 웨이팅 중 들르거나 차량 간식용.",d2:"맛나식당 앞"}
+  /* ===== 북부 나들이(둘째 날) 참고 ===== */
+  {cat:"맛집",name:"고집돌우럭 함덕점",area:"함덕",d:"오션뷰 우럭조림. 해양체험 뒤 함덕 점심으로 딱. 낮 2:50 마감 주의.",d2:"해양체험 점심"},
+  {cat:"맛집",name:"해장살롱 함덕본점",area:"함덕",d:"차돌 해장국. 유아의자·단체 OK로 아이+어르신에 안전. 북부 나들이 아침·점심 대안.",d2:"북부 아침"},
+  {cat:"사진명소",name:"비자림",area:"구좌",d:"천년 숲길이 시원해 한여름 더위 피난 1순위. 평탄한 A코스면 장모님도 무난.",d2:"북부 더위 피난"},
+  {cat:"사진명소",name:"김녕성세기해변",area:"구좌 김녕",d:"몰디브 같은 에메랄드 바다에 무료 넓은 주차장. 해양체험 근처 물놀이로 좋아요.",d2:"북부 물놀이"}
 ];
 
 const MAPICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
@@ -712,6 +795,38 @@ function legRow(stop, from){
   </div>`;
 }
 
+/* 이 동선 근처 추천: GPS가 켜져 있으면 내 위치, 아니면 그날 동선 중심 기준으로
+   일정에 없는 여분 스팟 3곳을 가까운 순으로 제시 */
+function renderDayReco(day){
+  const pool=(RECO[day.area]||[]).filter(id=>COORDS[id]&&DB[id]);
+  if(!pool.length) return "";
+  const stopIds=new Set(day.stops.map(s=>{const c=coordOf(s.name);return c&&c.id;}));
+  let anchor=ME;
+  if(!anchor){
+    const pts=day.stops.map(s=>coordOf(s.name)).filter(Boolean).map(c=>c.ll);
+    if(!pts.length) return "";
+    anchor=[pts.reduce((a,p)=>a+p[0],0)/pts.length, pts.reduce((a,p)=>a+p[1],0)/pts.length];
+  }
+  const ranked=pool.filter(id=>!stopIds.has(id))
+    .map(id=>({id,d:haversine(anchor,COORDS[id])}))
+    .sort((a,b)=>a.d-b.d).slice(0,3);
+  if(!ranked.length) return "";
+  const cards=ranked.map(r=>{
+    const m=DB[r.id], ll=COORDS[r.id];
+    const hex=(typeof CATHEX!=='undefined'&&CATHEX[m.cat])||"#0F8A82";
+    const km=r.d<1?`${Math.round(r.d*1000)}m`:`${r.d.toFixed(1)}km`;
+    const route=ME
+      ? `https://map.kakao.com/link/from/내위치,${ME[0]},${ME[1]}/to/${encodeURIComponent(m.name)},${ll[0]},${ll[1]}`
+      : `https://map.kakao.com/link/to/${encodeURIComponent(m.name)},${ll[0]},${ll[1]}`;
+    return `<a class="reco-card" href="${route}" target="_blank" rel="noopener">
+      <span class="reco-dot" style="background:${hex}"></span>
+      <span class="reco-info"><b>${m.name}</b><small>${m.cat} · <b>${km}</b> · 📍 ${m.area}</small></span>
+      <span class="reco-go">길찾기</span>
+    </a>`;
+  }).join("");
+  return `<div class="reco"><div class="reco-h">🧭 이 동선 근처 추천 ${ME?'<span class="live">내 위치 기준</span>':''}</div>${cards}</div>`;
+}
+
 function renderDays(planKey){
   const plan = PLANS[planKey];
   document.getElementById('planLead').innerHTML = plan.lead;
@@ -752,6 +867,7 @@ function renderDays(planKey){
         <a href="${dayRouteUrl(day)}" target="_blank" rel="noopener">하루 경로 한번에 열기</a>
       </div>
       <div class="stops">${stops}</div>
+      ${renderDayReco(day)}
     </section>${divider}`;
   }).join("");
 
@@ -779,7 +895,7 @@ function renderDays(planKey){
 function renderExtras(filter){
   const list = filter==="전체" ? EXTRAS : EXTRAS.filter(x=>x.cat===filter);
   document.getElementById('xgrid').innerHTML = list.map(x=>{
-    const id = XID[x.name];
+    const id = XID[x.name] || NAME2ID[x.name];
     const meta = id && DB[id] ? DB[id] : null;
     const kws = meta ? kwHtml(meta.kw) : "";
     const co = id && COORDS[id] ? COORDS[id] : (x.ll ? x.ll.split(',').map(Number) : null);
@@ -938,6 +1054,9 @@ document.getElementById('locbtn').addEventListener('click',()=>{
     ME=[pos.coords.latitude,pos.coords.longitude];
     btn.classList.remove('loading'); btn.textContent='📍 내 위치 갱신';
     markMe(); renderNearby();
+    // '이 근처 추천'을 내 위치 기준으로 갱신
+    const cp=document.querySelector('.seg button[aria-selected="true"]');
+    renderDays(cp?cp.dataset.plan:'A');
     document.getElementById('nearby').scrollIntoView({behavior:'smooth',block:'start'});
   },err=>{
     btn.classList.remove('loading'); btn.textContent='📍 내 위치';
